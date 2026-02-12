@@ -1,0 +1,564 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero hero-animated" aria-labelledby="hero-title">
+    <div class="hero-content">
+        <p class="hero-greeting">👋 Hi there, I'm</p>
+        <h1 id="hero-title" class="hero-title">
+            <span class="glow-text" data-text="Muhammad Shayan">Muhammad Shayan</span>
+        </h1>
+        <p class="hero-subtitle">
+            <span class="typing-text">Software Engineer | Erasmus Mundus Scholar | Cloud & Data Enthusiast</span>
+        </p>
+        <p class="hero-description">
+            Passionate about solving complex problems through Software, Data & Cloud technologies.
+            Currently pursuing my Master's in Computer Science at University of Amsterdam.
+        </p>
+        <div class="hero-cta">
+            <a href="{{ url_for('main.projects') }}" class="btn btn-primary btn-large magnetic-btn">
+                <span>🚀 View My Work</span>
+            </a>
+            <a href="{{ url_for('contact.contact') }}" class="btn btn-secondary btn-large magnetic-btn">
+                <span>💬 Get in Touch</span>
+            </a>
+        </div>
+        <div class="hero-badges">
+            <span class="badge">🎓 Erasmus Mundus SE4GD</span>
+            <span class="badge">� Software Engineering</span>
+            <span class="badge">☁️ Cloud</span>
+            <span class="badge">📊 Data</span>
+        </div>
+    </div>
+</section>
+
+<section class="featured-section" aria-labelledby="featured-title">
+    <div class="container">
+        <h2 id="featured-title" class="glow-text section-title" data-text="What I Do">What I Do</h2>
+        <div class="features-grid stagger-children">
+            <article class="feature-card interactive-card float-element">
+                <div class="feature-icon" aria-hidden="true">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>💻 Software Engineering</h3>
+                <p>Building scalable, maintainable software solutions, focusing on clean architecture and best practices.</p>
+            </article>
+
+            <article class="feature-card interactive-card float-element">
+                <div class="feature-icon" aria-hidden="true">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h3>📊 Data & Analytics</h3>
+                <p>Experience with InfluxDB, Grafana, and data pipelines. Passionate about turning data into actionable insights.</p>
+            </article>
+
+            <article class="feature-card interactive-card float-element">
+                <div class="feature-icon" aria-hidden="true">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                    </svg>
+                </div>
+                <h3>☁️ Cloud & DevOps</h3>
+                <p>Cloud deployment, CI/CD pipelines, and containerization. Building sustainable, accessible applications.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="journey-section" aria-labelledby="journey-title">
+    <div class="container">
+        <h2 id="journey-title" class="section-title glow-text" data-text="My Journey">💼 My Journey</h2>
+        <p class="journey-intro animate-on-scroll">From my first lines of code to building cloud-deployed MVPs — here's my professional journey so far.</p>
+        
+        <div class="journey-timeline">
+            <!-- Timeline Track -->
+            <div class="timeline-track">
+                <div class="timeline-progress"></div>
+            </div>
+            
+            <!-- Journey Items -->
+            <article class="journey-item animate-on-scroll" data-year="2025">
+                <div class="journey-node current">
+                    <span class="node-pulse"></span>
+                    <span class="node-icon">🔬</span>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-date">
+                        <span class="date-badge current">Nov 2025 - Present</span>
+                        <span class="location-badge">📍 Amsterdam, NL</span>
+                    </div>
+                    <h3>Graduate Thesis Research Intern</h3>
+                    <p class="journey-company">Schuberg Philis</p>
+                    <p class="journey-desc">Contributing to innovative projects, leveraging expertise in systems design and large language model development.</p>
+                    <div class="journey-tags">
+                        <span>LLM</span>
+                        <span>Systems Design</span>
+                        <span>Research</span>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="journey-item animate-on-scroll" data-year="2025">
+                <div class="journey-node">
+                    <span class="node-icon">📱</span>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-date">
+                        <span class="date-badge">Feb - Jun 2025</span>
+                        <span class="location-badge">📍 Finland</span>
+                    </div>
+                    <h3>Scrum Master</h3>
+                    <p class="journey-company">Elisa</p>
+                    <ul class="journey-highlights">
+                        <li>Directed a 4-member cross-functional team, delivering a cloud-deployed MVP</li>
+                        <li>Met WCAG 2.1 AA compliance for accessibility</li>
+                        <li>Implemented 34+ automated tests</li>
+                    </ul>
+                    <div class="journey-tags">
+                        <span>Scrum</span>
+                        <span>Cloud MVP</span>
+                        <span>WCAG 2.1</span>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="journey-item animate-on-scroll" data-year="2024">
+                <div class="journey-node">
+                    <span class="node-icon">📊</span>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-date">
+                        <span class="date-badge">May - Aug 2024</span>
+                        <span class="location-badge">📍 Islamabad, PK</span>
+                    </div>
+                    <h3>Business Analyst</h3>
+                    <p class="journey-company">Oak Street Technologies</p>
+                    <ul class="journey-highlights">
+                        <li>Selected as the only intern onboarded on two flagship projects</li>
+                        <li>Created detailed user stories improving project workflows</li>
+                        <li>Identified key areas for process optimization</li>
+                    </ul>
+                    <div class="journey-tags">
+                        <span>Business Analysis</span>
+                        <span>User Stories</span>
+                        <span>Agile</span>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="journey-item animate-on-scroll" data-year="2023">
+                <div class="journey-node highlight">
+                    <span class="node-icon">🏆</span>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-date">
+                        <span class="date-badge">Jul - Aug 2023</span>
+                        <span class="location-badge">📍 Islamabad, PK</span>
+                    </div>
+                    <h3>Front-End Developer</h3>
+                    <p class="journey-company">MRS Technologies</p>
+                    <div class="journey-achievement">
+                        ⭐ Top 15 out of 13,000 candidates • "High Potential Talent" Award
+                    </div>
+                    <ul class="journey-highlights">
+                        <li>Led Frontend team for IoT-based microgreens plant monitoring system</li>
+                        <li>Collaborated with Backend, UI/UX & Embedded teams</li>
+                    </ul>
+                    <div class="journey-tags">
+                        <span>IoT</span>
+                        <span>MQTT</span>
+                        <span>InfluxDB</span>
+                        <span>Grafana</span>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="journey-item animate-on-scroll" data-year="2022">
+                <div class="journey-node start">
+                    <span class="node-icon">🚀</span>
+                </div>
+                <div class="journey-card">
+                    <div class="journey-date">
+                        <span class="date-badge">Aug - Dec 2022</span>
+                        <span class="location-badge">📍 Pakistan</span>
+                    </div>
+                    <h3>Frontend Web Developer</h3>
+                    <p class="journey-company">The Digital Robe</p>
+                    <p class="journey-desc">Where it all began! Developed responsive company website using HTML, CSS, Bootstrap, and JavaScript.</p>
+                    <div class="journey-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Bootstrap</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="journey-start-badge">🌟 The Beginning</div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Journey Section Container */
+.journey-section {
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
+}
+
+/* Journey Timeline Styles */
+.journey-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.journey-timeline {
+    position: relative;
+    padding: 2rem 0;
+    overflow: visible;
+}
+
+.timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    bottom: 2rem;
+    width: 4px;
+    background: rgba(255,255,255,0.1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    border-radius: 2px;
+    transition: height 1s ease-out;
+}
+
+.journey-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.journey-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.journey-item:nth-child(odd) {
+    flex-direction: row;
+    padding-right: calc(50% + 40px);
+}
+
+.journey-item:nth-child(odd) .journey-card {
+    text-align: right;
+}
+
+.journey-item:nth-child(odd) .journey-tags,
+.journey-item:nth-child(odd) .journey-highlights {
+    justify-content: flex-end;
+}
+
+.journey-item:nth-child(even) {
+    flex-direction: row-reverse;
+    padding-left: calc(50% + 40px);
+}
+
+/* Journey Node */
+.journey-node {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: var(--color-bg-card);
+    border: 3px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.journey-node:hover {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+}
+
+.journey-node.current {
+    border-color: #22c55e;
+    animation: currentPulse 2s ease-in-out infinite;
+}
+
+.journey-node.highlight {
+    border-color: #fbbf24;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.1));
+}
+
+.journey-node.start {
+    border-color: var(--color-secondary);
+    background: linear-gradient(135deg, rgba(118, 75, 162, 0.2), rgba(118, 75, 162, 0.1));
+}
+
+.node-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #22c55e;
+    animation: pulse 2s ease-out infinite;
+}
+
+.node-icon {
+    font-size: 1.5rem;
+}
+
+@keyframes currentPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { box-shadow: 0 0 20px 10px rgba(34, 197, 94, 0.1); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Journey Card */
+.journey-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.journey-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+}
+
+.journey-date {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.date-badge {
+    background: rgba(102, 126, 234, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.date-badge.current {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.location-badge {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.journey-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.journey-company {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.journey-desc {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.journey-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0;
+}
+
+.journey-highlights li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.journey-highlights li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+.journey-item:nth-child(odd) .journey-highlights li {
+    padding-left: 0;
+    padding-right: 1.2rem;
+}
+
+.journey-item:nth-child(odd) .journey-highlights li::before {
+    left: auto;
+    right: 0;
+    content: "◃";
+}
+
+.journey-achievement {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.05));
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.journey-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+}
+
+.journey-tags span {
+    background: rgba(102, 126, 234, 0.15);
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.journey-start-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .timeline-track {
+        left: 30px;
+    }
+    
+    .journey-item,
+    .journey-item:nth-child(odd),
+    .journey-item:nth-child(even) {
+        flex-direction: row;
+        padding-left: 80px;
+        padding-right: 0;
+    }
+    
+    .journey-item:nth-child(odd) .journey-card {
+        text-align: left;
+    }
+    
+    .journey-item:nth-child(odd) .journey-tags,
+    .journey-item:nth-child(odd) .journey-highlights {
+        justify-content: flex-start;
+    }
+    
+    .journey-item:nth-child(odd) .journey-highlights li {
+        padding-left: 1.2rem;
+        padding-right: 0;
+    }
+    
+    .journey-item:nth-child(odd) .journey-highlights li::before {
+        left: 0;
+        right: auto;
+        content: "▹";
+    }
+    
+    .journey-node {
+        left: 30px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .node-icon {
+        font-size: 1.2rem;
+    }
+}
+</style>
+
+<script>
+// Journey Timeline Animation
+document.addEventListener('DOMContentLoaded', function() {
+    const journeyItems = document.querySelectorAll('.journey-item');
+    const timelineProgress = document.querySelector('.timeline-progress');
+    
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    let visibleCount = 0;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                    visibleCount++;
+                    
+                    // Update progress bar
+                    const progress = (visibleCount / journeyItems.length) * 100;
+                    if (timelineProgress) {
+                        timelineProgress.style.height = progress + '%';
+                    }
+                }, index * 150);
+            }
+        });
+    }, observerOptions);
+    
+    journeyItems.forEach(item => observer.observe(item));
+});
+</script>
+
+<section class="cta-section" aria-labelledby="cta-title">
+    <div class="container">
+        <h2 id="cta-title">Ready to Start a Project?</h2>
+        <p>Let's work together to bring your ideas to life.</p>
+        <a href="{{ url_for('contact.contact') }}" class="btn btn-primary btn-large">
+            Contact Me
+        </a>
+    </div>
+</section>
+{% endblock %}

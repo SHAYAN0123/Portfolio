@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="page-title">
+    <div class="container">
+        <h1 id="page-title">Terms of Service</h1>
+        <p class="page-subtitle">Last updated: February 2026</p>
+    </div>
+</section>
+
+<section class="legal-content">
+    <div class="container">
+        <article class="legal-article">
+            <h2>Acceptance of Terms</h2>
+            <p>By accessing this website, you agree to these terms of service.</p>
+
+            <h2>Use of Website</h2>
+            <p>You agree to use this website for lawful purposes only.</p>
+
+            <h2>Intellectual Property</h2>
+            <p>All content on this website is protected by copyright and other intellectual property rights.</p>
+
+            <h2>Limitation of Liability</h2>
+            <p>This website is provided "as is" without warranties of any kind.</p>
+
+            <h2>Contact</h2>
+            <p>For questions about these terms, <a href="{{ url_for('contact.contact') }}">contact us</a>.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

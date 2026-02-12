@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="page-title">
+    <div class="container">
+        <h1 id="page-title">Cookie Policy</h1>
+        <p class="page-subtitle">Last updated: February 2026</p>
+    </div>
+</section>
+
+<section class="legal-content">
+    <div class="container">
+        <article class="legal-article">
+            <h2>What Are Cookies?</h2>
+            <p>Cookies are small text files stored on your device when you visit a website.</p>
+
+            <h2>Cookies We Use</h2>
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Cookie</th>
+                        <th scope="col">Purpose</th>
+                        <th scope="col">Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>session</td>
+                        <td>Maintains your session</td>
+                        <td>Session</td>
+                    </tr>
+                    <tr>
+                        <td>csrf_token</td>
+                        <td>Security protection</td>
+                        <td>Session</td>
+                    </tr>
+                    <tr>
+                        <td>cookie_consent</td>
+                        <td>Remembers your preferences</td>
+                        <td>1 year</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Managing Cookies</h2>
+            <p>You can control cookies through your browser settings or our cookie consent banner.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

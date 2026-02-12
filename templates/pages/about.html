@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-header" aria-labelledby="page-title">
+    <div class="container">
+        <h1 id="page-title" class="glow-text" data-text="About Me">👋 About Me</h1>
+        <p class="page-subtitle">The story behind the code</p>
+    </div>
+</section>
+
+<section class="about-content" aria-labelledby="about-heading">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image animate-on-scroll">
+                <div class="image-placeholder float-element" role="img" aria-label="Muhammad Shayan profile photo">
+                    <span aria-hidden="true">👨‍💻</span>
+                </div>
+            </div>
+            <div class="about-text animate-on-scroll animate-delay-2">
+                <h2 id="about-heading">Hi, I'm <span class="glow-text" data-text="Muhammad Shayan">Muhammad Shayan</span></h2>
+                <p class="about-tagline">
+                    🎓 Erasmus Mundus Scholar (SE4GD) | � Software Engineer | ☁️ Cloud Enthusiast
+                </p>
+                <p>
+                    I'm currently pursuing a Master's degree in Computer Science as part of the 
+                    <strong>Erasmus Mundus Software Engineers for Green Deal (SE4GD)</strong> program 
+                    across four prestigious universities: University of Amsterdam, VU Amsterdam, 
+                    LUT University, and Università degli Studi dell'Aquila.
+                </p>
+                <div class="se4gd-note">
+                    <p><strong>What is SE4GD?</strong> It's an EU-funded Erasmus Mundus Joint Master's program that trains software engineers to build sustainable, environmentally-conscious software solutions. The program focuses on green computing, energy-efficient systems, and leveraging technology to address climate challenges — aligning software development with the European Green Deal goals.</p>
+                </div>
+                <p>
+                    My academic journey includes a Bachelor of Science in Software Engineering from 
+                    Liverpool John Moores University, where I built a strong foundation in computer 
+                    science principles.
+                </p>
+                <p>
+                    Currently, I'm working as a Graduate Thesis Research Intern at <strong>Schuberg Philis</strong> 
+                    in Amsterdam, contributing to innovative projects in systems design and large language model development.
+                </p>
+                
+                <div class="about-stats stagger-children">
+                    <div class="stat-item">
+                        <span class="stat-number" data-counter="4">0</span>
+                        <span class="stat-label">Universities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-counter="5">0</span>+
+                        <span class="stat-label">Internships</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-counter="4">0</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-counter="4">0</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                </div>
+                
+                <a href="{{ url_for('contact.contact') }}" class="btn btn-primary btn-large magnetic-btn">
+                    💬 Let's Connect
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="education-section" aria-labelledby="education-title">
+    <div class="container">
+        <h2 id="education-title" class="section-title glow-text" data-text="Education">🎓 Education</h2>
+        <div class="education-grid stagger-children">
+            <article class="education-card interactive-card">
+                <div class="education-icon">🇳🇱</div>
+                <h3>University of Amsterdam & VU Amsterdam</h3>
+                <p class="education-degree">Master's in Computer Science (Joint Degree)</p>
+                <p class="education-date">Sep 2024 - Sep 2026</p>
+                <span class="badge">Erasmus Mundus SE4GD</span>
+            </article>
+            
+            <article class="education-card interactive-card">
+                <div class="education-icon">🇫🇮</div>
+                <h3>LUT University</h3>
+                <p class="education-degree">Master's in Computer Software Engineering</p>
+                <p class="education-date">Sep 2024 - Aug 2026</p>
+                <span class="badge">Erasmus Mundus SE4GD</span>
+            </article>
+            
+            <article class="education-card interactive-card">
+                <div class="education-icon">🇮🇹</div>
+                <h3>Università degli Studi dell'Aquila</h3>
+                <p class="education-degree">Master's in Computer Software Engineering</p>
+                <p class="education-date">Sep 2024 - Aug 2026</p>
+                <span class="badge">Erasmus Mundus SE4GD</span>
+            </article>
+            
+            <article class="education-card interactive-card">
+                <div class="education-icon">🇬🇧</div>
+                <h3>Liverpool John Moores University</h3>
+                <p class="education-degree">BSc Software Engineering</p>
+                <p class="education-date">Oct 2021 - Jul 2024</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="languages-section" aria-labelledby="languages-title">
+    <div class="container">
+        <h2 id="languages-title" class="section-title">🌍 Languages</h2>
+        <div class="languages-grid stagger-children">
+            <div class="language-item interactive-card">
+                <span class="language-name">English</span>
+                <span class="language-level">Full Professional</span>
+            </div>
+            <div class="language-item interactive-card">
+                <span class="language-name">Urdu</span>
+                <span class="language-level">Native</span>
+            </div>
+            <div class="language-item interactive-card">
+                <span class="language-name">Punjabi</span>
+                <span class="language-level">Native</span>
+            </div>
+            <div class="language-item interactive-card">
+                <span class="language-name">Hindi</span>
+                <span class="language-level">Native</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

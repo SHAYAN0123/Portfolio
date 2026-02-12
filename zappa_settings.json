@@ -1,0 +1,59 @@
+{
+    "dev": {
+        "app_function": "src.app.create_app",
+        "project_name": "portfolio",
+        "runtime": "python3.11",
+        "s3_bucket": "portfolio-zappa-deployments",
+        "aws_region": "eu-north-1",
+        "profile_name": "default",
+        "keep_warm": false,
+        "memory_size": 256,
+        "timeout_seconds": 30,
+        "log_level": "INFO",
+        "cors": true,
+        "binary_support": true,
+        "exclude": [
+            ".git/*",
+            ".github/*",
+            ".venv/*",
+            "__pycache__/*",
+            "*.pyc",
+            ".pytest_cache/*",
+            "tests/*",
+            "*.md",
+            ".env",
+            ".env.example",
+            "node_modules/*",
+            "htmlcov/*",
+            ".coverage"
+        ],
+        "environment_variables": {
+            "FLASK_ENV": "development",
+            "SECRET_KEY": "change-me-in-aws-secrets-manager"
+        },
+        "aws_environment_variables": {
+            "LOG_LEVEL": "INFO"
+        },
+        "xray_tracing": false
+    },
+    "prod": {
+        "extends": "dev",
+        "s3_bucket": "portfolio-zappa-prod",
+        "domain": "muhammadshayan.dev",
+        "certificate_arn": "arn:aws:acm:us-east-1:YOUR_ACCOUNT:certificate/YOUR_CERT_ID",
+        "keep_warm": true,
+        "memory_size": 512,
+        "timeout_seconds": 30,
+        "log_level": "WARNING",
+        "environment_variables": {
+            "FLASK_ENV": "production",
+            "SECRET_KEY": "{{resolve:secretsmanager:portfolio/secret-key}}"
+        },
+        "xray_tracing": true,
+        "tags": {
+            "Project": "Portfolio",
+            "Owner": "Muhammad Shayan",
+            "Environment": "Production"
+        }
+    }
+}

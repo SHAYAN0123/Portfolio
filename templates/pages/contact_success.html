@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="success-section" aria-labelledby="success-title">
+    <div class="container text-center">
+        <div class="success-icon" aria-hidden="true">✅</div>
+        <h1 id="success-title">Message Sent!</h1>
+        <p>Thank you for reaching out. I'll get back to you soon.</p>
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary">Return Home</a>
+    </div>
+</section>
+{% endblock %}

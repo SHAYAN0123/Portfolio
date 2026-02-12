@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" x-data x-cloak>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ meta_description | default('Muhammad Shayan - Erasmus Mundus Scholar, Software Engineer, specializing in sustainable software development and cloud solutions.') }}">
+    <meta name="author" content="Muhammad Shayan">
+    <meta name="keywords" content="Muhammad Shayan, Software Engineer, Erasmus Mundus, SE4GD, Flask, Python, Cloud, Sustainability, Portfolio">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }} | Muhammad Shayan">
+    <meta property="og:description" content="Erasmus Mundus Scholar | SE4GD | Software Engineer passionate about sustainable technology">
+    <meta property="og:url" content="https://muhammadshayan.dev">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <title>{{ title }} | Muhammad Shayan</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets - Tailwind CSS (built) or fallback to main.css -->
+    {% if config.DEBUG %}
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/static/src/main.js"></script>
+    <link rel="stylesheet" href="http://localhost:5173/static/src/styles.css">
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/styles.css') }}">
+    <script type="module" src="{{ url_for('static', filename='dist/main.js') }}"></script>
+    {% endif %}
+    
+    <!-- Fallback CSS for when Vite isn't running -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- Alpine.js Cloak - prevents FOUC -->
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 text-white min-h-screen antialiased">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg">
+        Skip to main content
+    </a>
+
+    <!-- Header with navigation -->
+    <header 
+        x-data="navbar" 
+        class="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
+        :class="scrolled ? 'bg-slate-900/80 backdrop-blur-xl border-b border-white/10 shadow-lg' : 'bg-transparent'"
+        role="banner"
+    >
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Main navigation">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a 
+                    href="{{ url_for('main.index') }}" 
+                    class="relative group flex items-center gap-2"
+                    aria-label="Home"
+                    x-data="magneticButton"
+                    @mousemove="handleMouseMove($event)"
+                    @mouseleave="handleMouseLeave()"
+                    :style="{ transform: transform }"
+                >
+                    <span class="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+                        MS
+                    </span>
+                    <span class="hidden sm:inline text-sm text-slate-400 font-medium">
+                        Muhammad Shayan
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center gap-1" role="menubar">
+                    <li role="none">
+                        <a href="{{ url_for('main.index') }}" 
+                           class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}"
+                           role="menuitem"
+                           {% if request.endpoint == 'main.index' %}aria-current="page"{% endif %}>
+                            Home
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="{{ url_for('main.about') }}" 
+                           class="nav-link {% if request.endpoint == 'main.about' %}active{% endif %}"
+                           role="menuitem"
+                           {% if request.endpoint == 'main.about' %}aria-current="page"{% endif %}>
+                            About
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="{{ url_for('main.projects') }}" 
+                           class="nav-link {% if request.endpoint == 'main.projects' %}active{% endif %}"
+                           role="menuitem"
+                           {% if request.endpoint == 'main.projects' %}aria-current="page"{% endif %}>
+                            Projects
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="{{ url_for('main.skills') }}" 
+                           class="nav-link {% if request.endpoint == 'main.skills' %}active{% endif %}"
+                           role="menuitem"
+                           {% if request.endpoint == 'main.skills' %}aria-current="page"{% endif %}>
+                            Skills
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="{{ url_for('contact.contact') }}" 
+                           class="btn-primary text-sm"
+                           role="menuitem"
+                           {% if request.endpoint == 'contact.contact' %}aria-current="page"{% endif %}>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile menu button -->
+                <button
+                    @click="$store.nav.toggle()"
+                    class="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 transition-colors hover:bg-white/10"
+                    :aria-expanded="$store.nav.open"
+                    aria-controls="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                >
+                    <div class="w-5 h-4 flex flex-col justify-between">
+                        <span 
+                            class="w-full h-0.5 bg-white rounded-full transition-all duration-300 origin-center"
+                            :class="$store.nav.open ? 'rotate-45 translate-y-1.5' : ''"
+                        ></span>
+                        <span 
+                            class="w-full h-0.5 bg-white rounded-full transition-all duration-300"
+                            :class="$store.nav.open ? 'opacity-0 scale-0' : ''"
+                        ></span>
+                        <span 
+                            class="w-full h-0.5 bg-white rounded-full transition-all duration-300 origin-center"
+                            :class="$store.nav.open ? '-rotate-45 -translate-y-1.5' : ''"
+                        ></span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div 
+                id="mobile-menu"
+                x-show="$store.nav.open"
+                x-collapse
+                x-trap.inert.noscroll="$store.nav.open"
+                @keydown.escape.window="$store.nav.close()"
+                class="md:hidden"
+            >
+                <ul class="py-4 space-y-1 border-t border-white/10">
+                    <li>
+                        <a href="{{ url_for('main.index') }}" 
+                           class="block px-4 py-3 rounded-lg transition-colors hover:bg-white/5 {% if request.endpoint == 'main.index' %}text-primary-400 bg-white/5{% else %}text-white{% endif %}"
+                           @click="$store.nav.close()">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.about') }}" 
+                           class="block px-4 py-3 rounded-lg transition-colors hover:bg-white/5 {% if request.endpoint == 'main.about' %}text-primary-400 bg-white/5{% else %}text-white{% endif %}"
+                           @click="$store.nav.close()">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.projects') }}" 
+                           class="block px-4 py-3 rounded-lg transition-colors hover:bg-white/5 {% if request.endpoint == 'main.projects' %}text-primary-400 bg-white/5{% else %}text-white{% endif %}"
+                           @click="$store.nav.close()">
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.skills') }}" 
+                           class="block px-4 py-3 rounded-lg transition-colors hover:bg-white/5 {% if request.endpoint == 'main.skills' %}text-primary-400 bg-white/5{% else %}text-white{% endif %}"
+                           @click="$store.nav.close()">
+                            Skills
+                        </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="{{ url_for('contact.contact') }}" 
+                           class="block mx-4 text-center btn-primary"
+                           @click="$store.nav.close()">
+                            Contact Me
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="fixed top-24 right-4 z-50 space-y-2" role="alert" aria-live="polite">
+                {% for category, message in messages %}
+                    <div 
+                        x-data="{ show: true }"
+                        x-show="show"
+                        x-init="setTimeout(() => show = false, 5000)"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 translate-x-8"
+                        x-transition:enter-end="opacity-100 translate-x-0"
+                        x-transition:leave="transition ease-in duration-200"
+                        x-transition:leave-start="opacity-100 translate-x-0"
+                        x-transition:leave-end="opacity-0 translate-x-8"
+                        class="flex items-center gap-3 px-4 py-3 rounded-xl backdrop-blur-xl border shadow-lg
+                               {% if category == 'success' %}bg-emerald-500/20 border-emerald-500/30 text-emerald-300
+                               {% elif category == 'error' %}bg-red-500/20 border-red-500/30 text-red-300
+                               {% elif category == 'warning' %}bg-amber-500/20 border-amber-500/30 text-amber-300
+                               {% else %}bg-primary-500/20 border-primary-500/30 text-primary-300{% endif %}"
+                    >
+                        <span>{{ message }}</span>
+                        <button 
+                            @click="show = false" 
+                            class="p-1 rounded-lg hover:bg-white/10 transition-colors"
+                            aria-label="Dismiss message"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main content -->
+    <main id="main-content" class="pt-16 md:pt-20" role="main" tabindex="-1">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative mt-20 border-t border-white/10 bg-slate-900/50 backdrop-blur-xl" role="contentinfo">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <a href="{{ url_for('main.index') }}" class="inline-flex items-center gap-2 mb-4">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+                            MS
+                        </span>
+                    </a>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Erasmus Mundus Scholar building sustainable software solutions. Passionate about clean code, cloud technologies, and making a positive impact.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://github.com/12mshayan" 
+                           class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-primary-500/50 transition-all"
+                           aria-label="GitHub Profile" 
+                           rel="noopener noreferrer" 
+                           target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-shayan-" 
+                           class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-primary-500/50 transition-all"
+                           aria-label="LinkedIn Profile" 
+                           rel="noopener noreferrer" 
+                           target="_blank">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:12mshayan@gmail.com" 
+                           class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-primary-500/50 transition-all"
+                           aria-label="Email Me">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="{{ url_for('main.index') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('main.about') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('main.projects') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                Projects
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('contact.contact') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="{{ url_for('privacy.privacy_policy') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('privacy.cookie_policy') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                Cookie Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('privacy.terms') }}" class="text-slate-400 hover:text-white transition-colors animated-underline">
+                                Terms of Service
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Get in Touch</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-slate-400">
+                            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <a href="mailto:12mshayan@gmail.com" class="hover:text-white transition-colors">
+                                12mshayan@gmail.com
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400">
+                            <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Amsterdam, Netherlands</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-slate-400 text-sm">
+                    &copy; {{ now().year if now is defined else '2026' }} Muhammad Shayan. Made with 💜 and Flask.
+                </p>
+                <p class="text-slate-500 text-sm">
+                    Erasmus Mundus Scholar | Building Sustainable Software
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CDN fallback for Alpine.js if Vite isn't running -->
+    <script>
+        if (typeof Alpine === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js';
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+    </script>
+    
+    <!-- Legacy JS fallback -->
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
