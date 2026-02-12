@@ -22,10 +22,14 @@ def create_app(config_name: str | None = None) -> Flask:
     Returns:
         Configured Flask application instance
     """
+    # Use absolute paths for Lambda compatibility
+    import os
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
     app = Flask(
         __name__,
-        template_folder="../templates",
-        static_folder="../static",
+        template_folder=os.path.join(base_dir, "templates"),
+        static_folder=os.path.join(base_dir, "static"),
     )
 
     # Load configuration
@@ -73,9 +77,20 @@ def init_extensions(app: Flask) -> None:
     # Initialize rate limiting
     limiter.init_app(app)
 
+    # Check if running in Lambda (API Gateway handles HTTPS)
+    is_lambda = os.environ.get('AWS_LAMBDA_FUNCTION_NAME') is not None
+
     # Initialize security headers (Talisman)
-    # Only enable in production for HTTPS
-    if not app.debug:
+    if is_lambda:
+        # Lambda behind API Gateway - don't force HTTPS (API Gateway handles it)
+        talisman.init_app(
+            app,
+            force_https=False,
+            strict_transport_security=False,
+            session_cookie_secure=False,
+            content_security_policy=None,
+        )
+    elif not app.debug:
         talisman.init_app(
             app,
             force_https=True,
@@ -145,11 +160,18 @@ def configure_logging(app: Flask) -> None:
         app: Flask application instance
     """
     log_level = app.config.get("LOG_LEVEL", "INFO")
-    log_file = app.config.get("LOG_FILE", "logs/app.log")
-
-    # Ensure logs directory exists
-    log_path = Path(log_file)
-    log_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Check if running in Lambda (read-only filesystem)
+    is_lambda = os.environ.get('AWS_LAMBDA_FUNCTION_NAME') is not None
+    
+    if is_lambda:
+        # In Lambda, use /tmp for logs or just console logging
+        log_file = "/tmp/app.log"
+    else:
+        log_file = app.config.get("LOG_FILE", "logs/app.log")
+        # Ensure logs directory exists (only for non-Lambda)
+        log_path = Path(log_file)
+        log_path.parent.mkdir(parents=True, exist_ok=True)
 
     # Configure file handler
     file_handler = RotatingFileHandler(
@@ -178,6 +200,27 @@ def main() -> None:
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_ENV", "production") == "development"
     app.run(host=host, port=port, debug=debug)
+
+
+# WSGI app instance for Zappa/Lambda
+_app_error = None
+try:
+    app = create_app()
+except Exception as e:
+    _app_error = str(e)
+    import traceback
+    _app_error = traceback.format_exc()
+    # Fallback minimal app for debugging
+    from flask import Flask, jsonify
+    app = Flask(__name__)
+    
+    @app.route('/')
+    def error_handler():
+        return jsonify({"error": _app_error}), 500
+    
+    @app.route('/health')
+    def health():
+        return jsonify({"status": "error", "error": _app_error}), 500
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 {
     "dev": {
-        "app_function": "src.app.create_app",
+        "app_function": "src.app.app",
         "project_name": "portfolio",
         "runtime": "python3.11",
         "s3_bucket": "portfolio-zappa-deployments",

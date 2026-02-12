@@ -1,6 +1,7 @@
 """Health check endpoints for AWS Lambda/ALB monitoring."""
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, current_app
 from datetime import datetime, timezone
+import os
 
 health_bp = Blueprint('health', __name__)
 
@@ -15,6 +16,19 @@ def health_check():
         'status': 'healthy',
         'timestamp': datetime.now(timezone.utc).isoformat(),
         'service': 'portfolio'
+    }), 200
+
+
+@health_bp.route('/debug')
+def debug_info():
+    """Debug endpoint to check Lambda environment."""
+    return jsonify({
+        'template_folder': current_app.template_folder,
+        'static_folder': current_app.static_folder,
+        'template_exists': os.path.exists(current_app.template_folder) if current_app.template_folder else False,
+        'cwd': os.getcwd(),
+        'lambda': bool(os.environ.get('AWS_LAMBDA_FUNCTION_NAME')),
+        'files_in_task': os.listdir('/var/task') if os.path.exists('/var/task') else []
     }), 200
 
 
