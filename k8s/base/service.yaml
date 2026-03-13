@@ -1,0 +1,26 @@
+# =============================================================================
+# Kubernetes Service
+# =============================================================================
+# Exposes the portfolio deployment within the cluster
+# Works with any ingress controller or load balancer
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio
+  namespace: portfolio
+  labels:
+    app.kubernetes.io/name: portfolio
+    app.kubernetes.io/component: service
+spec:
+  type: ClusterIP
+  
+  selector:
+    app.kubernetes.io/name: portfolio
+    app.kubernetes.io/component: web
+  
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

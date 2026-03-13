@@ -1,0 +1,63 @@
+# =============================================================================
+# Production Overlay
+# =============================================================================
+# Production-ready configuration for any Kubernetes cluster
+# Usage: kubectl apply -k k8s/overlays/production/
+# =============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: portfolio
+
+# Base resources
+resources:
+  - ../../base
+
+# Common labels
+commonLabels:
+  app.kubernetes.io/environment: production
+
+# Image configuration (update before deployment)
+images:
+  - name: portfolio
+    newName: ghcr.io/shayan0123/portfolio
+    newTag: latest  # Replace with specific version in CI/CD
+
+# Patches for production
+patches:
+  # Increase replicas
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: portfolio
+      spec:
+        replicas: 3
+  
+  # Increase resources
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: portfolio
+      spec:
+        template:
+          spec:
+            containers:
+              - name: portfolio
+                resources:
+                  requests:
+                    cpu: "200m"
+                    memory: "256Mi"
+                  limits:
+                    cpu: "1000m"
+                    memory: "1Gi"
+
+# ConfigMap overrides
+configMapGenerator:
+  - name: portfolio-config
+    behavior: merge
+    literals:
+      - FLASK_ENV=production
+      - LOG_LEVEL=WARNING
+      - WORKERS=4

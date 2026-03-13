@@ -1,0 +1,46 @@
+# =============================================================================
+# Kubernetes Ingress
+# =============================================================================
+# Cloud-agnostic ingress configuration
+# Works with: nginx-ingress, traefik, AWS ALB, GKE Ingress, Azure App Gateway
+#
+# For cloud-specific annotations, see overlays/
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio
+  namespace: portfolio
+  labels:
+    app.kubernetes.io/name: portfolio
+    app.kubernetes.io/component: ingress
+  annotations:
+    # Generic annotations (override in overlays for specific ingress controllers)
+    kubernetes.io/ingress.class: "nginx"
+    
+    # SSL redirect
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    
+    # Rate limiting
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+    
+    # CORS (if needed)
+    # nginx.ingress.kubernetes.io/enable-cors: "true"
+spec:
+  # TLS configuration
+  tls:
+    - hosts:
+        - portfolio.example.com  # Replace with your domain
+      secretName: portfolio-tls
+  
+  rules:
+    - host: portfolio.example.com  # Replace with your domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio
+                port:
+                  name: http

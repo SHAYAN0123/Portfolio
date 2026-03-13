@@ -1,0 +1,25 @@
+# =============================================================================
+# Kustomize Base Configuration
+# =============================================================================
+# Combines all base Kubernetes resources
+# Usage: kubectl apply -k k8s/base/
+# =============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: portfolio
+
+# Common labels applied to all resources
+commonLabels:
+  app.kubernetes.io/name: portfolio
+  app.kubernetes.io/managed-by: kustomize
+
+# Resources to include
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - secret.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - hpa.yaml

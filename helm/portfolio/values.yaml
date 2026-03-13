@@ -1,0 +1,160 @@
+# =============================================================================
+# Helm Chart Values
+# =============================================================================
+# Cloud-agnostic values that work on any Kubernetes cluster
+# Override these in values-<env>.yaml or via --set flags
+# =============================================================================
+
+# Replica count
+replicaCount: 2
+
+# Image configuration
+image:
+  repository: ghcr.io/shayan0123/portfolio
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+# Image pull secrets (for private registries)
+imagePullSecrets: []
+
+# Override names
+nameOverride: ""
+fullnameOverride: ""
+
+# Service account
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+# Pod annotations
+podAnnotations: {}
+
+# Pod security context
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+# Container security context
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: portfolio.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+    # - secretName: portfolio-tls
+    #   hosts:
+    #     - portfolio.example.com
+
+# Resource limits
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Autoscaling
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# Node selector
+nodeSelector: {}
+
+# Tolerations
+tolerations: []
+
+# Affinity
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: portfolio
+          topologyKey: kubernetes.io/hostname
+
+# =============================================================================
+# Application Configuration
+# =============================================================================
+
+# Flask configuration
+config:
+  flaskEnv: production
+  logLevel: INFO
+  workers: "4"
+  port: "8000"
+  appVersion: "1.0.0"
+  staticUrl: "/static"
+  cdnUrl: ""
+
+# Secrets (use external secrets in production)
+secrets:
+  # Generate with: openssl rand -hex 32
+  secretKey: ""  # Required - set via --set secrets.secretKey=xxx
+  databaseUrl: ""
+  redisUrl: ""
+  sentryDsn: ""
+
+# External secrets (for cloud secret managers)
+externalSecrets:
+  enabled: false
+  # AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, etc.
+  # Configure based on your secret store
+
+# =============================================================================
+# Health Checks
+# =============================================================================
+
+livenessProbe:
+  httpGet:
+    path: /livez
+    port: http
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+startupProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  failureThreshold: 30

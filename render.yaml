@@ -1,0 +1,31 @@
+# =============================================================================
+# Render Configuration
+# =============================================================================
+# Render will auto-detect this file and use it for deployment
+# =============================================================================
+
+services:
+  - type: web
+    name: portfolio
+    runtime: docker
+    plan: free
+    region: oregon  # or frankfurt, singapore, ohio
+    
+    # Health check
+    healthCheckPath: /health
+    
+    # Auto-deploy on push
+    autoDeploy: true
+    
+    # Environment variables
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: "8000"
+      - key: WORKERS
+        value: "2"
+      - key: LOG_LEVEL
+        value: INFO

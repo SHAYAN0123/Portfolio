@@ -1,16 +1,27 @@
 """Portfolio Website Application Factory.
 
 This module contains the Flask application factory and configuration.
+Cloud-agnostic - works on any platform: AWS, GCP, Azure, K8s, Docker, etc.
 """
 
 from __future__ import annotations
 
 import logging
 import os
+import sys
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 from flask import Flask
+
+from src.config.cloud import (
+    CloudConfig,
+    detect_environment,
+    get_config,
+    get_log_path,
+    is_serverless_environment,
+    is_container_environment,
+)
 
 
 def create_app(config_name: str | None = None) -> Flask:
@@ -70,6 +81,8 @@ def init_extensions(app: Flask) -> None:
         app: Flask application instance
     """
     from src.extensions import csrf, limiter, talisman
+    
+    cloud_config = get_config()
 
     # Initialize CSRF protection
     csrf.init_app(app)
@@ -77,20 +90,18 @@ def init_extensions(app: Flask) -> None:
     # Initialize rate limiting
     limiter.init_app(app)
 
-    # Check if running in Lambda (API Gateway handles HTTPS)
-    is_lambda = os.environ.get('AWS_LAMBDA_FUNCTION_NAME') is not None
+    # Determine HTTPS settings based on environment
+    # Serverless: Gateway handles HTTPS (AWS API Gateway, Cloud Run, etc.)
+    # Container: Let reverse proxy handle HTTPS
+    # Production: Force HTTPS
+    force_https = (
+        cloud_config.enable_https_redirect
+        and not is_serverless_environment()
+        and not app.debug
+    )
 
     # Initialize security headers (Talisman)
-    if is_lambda:
-        # Lambda behind API Gateway - don't force HTTPS (API Gateway handles it)
-        talisman.init_app(
-            app,
-            force_https=False,
-            strict_transport_security=False,
-            session_cookie_secure=False,
-            content_security_policy=None,
-        )
-    elif not app.debug:
+    if force_https:
         talisman.init_app(
             app,
             force_https=True,
@@ -105,7 +116,7 @@ def init_extensions(app: Flask) -> None:
             },
         )
     else:
-        # Development mode - relaxed security
+        # Development or serverless - relaxed security
         talisman.init_app(
             app,
             force_https=False,
@@ -161,36 +172,49 @@ def configure_logging(app: Flask) -> None:
     """
     log_level = app.config.get("LOG_LEVEL", "INFO")
     
-    # Check if running in Lambda (read-only filesystem)
-    is_lambda = os.environ.get('AWS_LAMBDA_FUNCTION_NAME') is not None
+    # Use cloud-agnostic log path detection
+    log_dir = get_log_path()
+    log_file = log_dir / "app.log"
     
-    if is_lambda:
-        # In Lambda, use /tmp for logs or just console logging
-        log_file = "/tmp/app.log"
-    else:
-        log_file = app.config.get("LOG_FILE", "logs/app.log")
-        # Ensure logs directory exists (only for non-Lambda)
-        log_path = Path(log_file)
-        log_path.parent.mkdir(parents=True, exist_ok=True)
+    # Ensure log directory exists (may fail in serverless, that's OK)
+    try:
+        log_dir.mkdir(parents=True, exist_ok=True)
+    except (OSError, PermissionError):
+        pass
 
-    # Configure file handler
-    file_handler = RotatingFileHandler(
-        log_file,
-        maxBytes=10485760,  # 10MB
-        backupCount=10,
-    )
-    file_handler.setFormatter(
+    # Configure file handler (if possible)
+    try:
+        file_handler = RotatingFileHandler(
+            str(log_file),
+            maxBytes=10485760,  # 10MB
+            backupCount=10,
+        )
+        file_handler.setFormatter(
+            logging.Formatter(
+                "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]",
+            ),
+        )
+        file_handler.setLevel(getattr(logging, log_level))
+        app.logger.addHandler(file_handler)
+    except (OSError, PermissionError):
+        # Can't write to file (serverless/read-only), use stdout
+        pass
+
+    # Always add stream handler for container/cloud logging
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(
         logging.Formatter(
-            "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]",
+            "%(asctime)s %(levelname)s: %(message)s",
         ),
     )
-    file_handler.setLevel(getattr(logging, log_level))
+    stream_handler.setLevel(getattr(logging, log_level))
+    app.logger.addHandler(stream_handler)
 
-    # Configure app logger
-    app.logger.addHandler(file_handler)
     app.logger.setLevel(getattr(logging, log_level))
-
-    app.logger.info("Portfolio website startup")
+    
+    # Log startup info
+    cloud_env = detect_environment()
+    app.logger.info(f"Portfolio website startup - Environment: {cloud_env.value}")
 
 
 def main() -> None:

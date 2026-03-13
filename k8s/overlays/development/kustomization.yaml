@@ -1,0 +1,49 @@
+# =============================================================================
+# Development Overlay
+# =============================================================================
+# Customize for development/local Kubernetes (minikube, kind, k3s)
+# Usage: kubectl apply -k k8s/overlays/development/
+# =============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: portfolio-dev
+
+# Base resources
+resources:
+  - ../../base
+
+# Name suffix for all resources
+nameSuffix: -dev
+
+# Common labels
+commonLabels:
+  app.kubernetes.io/environment: development
+
+# Patches for development
+patches:
+  # Reduce replicas for development
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: portfolio
+      spec:
+        replicas: 1
+  
+  # Disable HPA in development
+  - patch: |-
+      $patch: delete
+      apiVersion: autoscaling/v2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: portfolio
+
+# ConfigMap overrides
+configMapGenerator:
+  - name: portfolio-config
+    behavior: merge
+    literals:
+      - FLASK_ENV=development
+      - LOG_LEVEL=DEBUG
+      - WORKERS=1
