@@ -132,15 +132,13 @@ def register_blueprints(app: Flask) -> None:
     Args:
         app: Flask application instance
     """
-    from src.routes.contact import contact_bp
+    from src.routes.api import api_bp
     from src.routes.main import main_bp
-    from src.routes.privacy import privacy_bp
     from src.health import health_bp
 
-    app.register_blueprint(main_bp)
-    app.register_blueprint(contact_bp, url_prefix="/contact")
-    app.register_blueprint(privacy_bp, url_prefix="/privacy")
     app.register_blueprint(health_bp)
+    app.register_blueprint(api_bp, url_prefix="/api")
+    app.register_blueprint(main_bp)
 
 
 def register_error_handlers(app: Flask) -> None:

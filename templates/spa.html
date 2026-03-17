@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muhammad Shayan - Erasmus Mundus Scholar, Software Engineer specializing in sustainable software and cloud solutions.">
+  <meta name="author" content="Muhammad Shayan">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Muhammad Shayan | Software Engineer">
+  <meta property="og:description" content="Erasmus Mundus Scholar | SE4GD | Software Engineer passionate about sustainable technology">
+  <title>Muhammad Shayan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  {% if config.DEBUG %}
+  <script type="module" src="http://localhost:5173/@vite/client"></script>
+  <script type="module" src="http://localhost:5173/static/src/main.jsx"></script>
+  {% else %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='dist/styles.css') }}">
+  <script type="module" src="{{ url_for('static', filename='dist/main.js') }}"></script>
+  {% endif %}
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 text-white min-h-screen antialiased">
+  <div id="root"></div>
+</body>
+</html>

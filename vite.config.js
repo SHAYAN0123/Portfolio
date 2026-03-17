@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 export default defineConfig({
+  plugins: [react()],
   root: '.',
   base: '/static/',
   build: {
@@ -10,8 +12,7 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'static/src/main.js'),
-        styles: resolve(__dirname, 'static/src/styles.css'),
+        main: resolve(__dirname, 'static/src/main.jsx'),
       },
       output: {
         entryFileNames: '[name].js',
@@ -23,5 +24,11 @@ export default defineConfig({
   server: {
     origin: 'http://localhost:5173',
     cors: true,
+    proxy: {
+      '/api': 'http://localhost:5000',
+      '/health': 'http://localhost:5000',
+      '/live': 'http://localhost:5000',
+      '/ready': 'http://localhost:5000',
+    },
   },
 })

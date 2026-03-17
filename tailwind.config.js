@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./templates/**/*.html",
-    "./static/src/**/*.js",
+    "./static/src/**/*.{js,jsx}",
+    "./templates/spa.html",
   ],
   darkMode: 'class',
   theme: {
