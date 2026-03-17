@@ -120,20 +120,24 @@ Alpine.data('magneticButton', () => ({
   }
 }))
 
-Alpine.data('typewriter', (text, speed = 50) => ({
+Alpine.data('typewriter', (inputText, speed = 50) => ({
   displayText: '',
   index: 0,
   started: false,
+  done: false,
+  text: inputText,
   start() {
     if (this.started) return
     this.started = true
     this.type()
   },
   type() {
-    if (this.index < text.length) {
-      this.displayText += text.charAt(this.index)
+    if (this.index < this.text.length) {
+      this.displayText += this.text.charAt(this.index)
       this.index++
       setTimeout(() => this.type(), speed)
+    } else {
+      this.done = true
     }
   }
 }))
@@ -284,6 +288,31 @@ window.utils = {
     }
   }
 }
+
+Alpine.data('scrollProgress', () => ({
+  progress: 0,
+  init() {
+    window.addEventListener('scroll', () => this.update(), { passive: true })
+    this.update()
+  },
+  update() {
+    const scrollTop = window.scrollY
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight
+    this.progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+  }
+}))
+
+Alpine.data('scrollToTop', () => ({
+  visible: false,
+  init() {
+    window.addEventListener('scroll', () => {
+      this.visible = window.scrollY > 400
+    }, { passive: true })
+  },
+  scrollUp() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}))
 
 Alpine.data('journeyTimeline', () => ({
   revealed: 0,
