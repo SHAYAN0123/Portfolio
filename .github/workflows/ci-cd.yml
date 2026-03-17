@@ -137,6 +137,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install frontend dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Verify frontend build output
+        run: ls -la static/dist/
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 

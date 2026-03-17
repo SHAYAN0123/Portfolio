@@ -38,8 +38,6 @@
     <script type="module" src="{{ url_for('static', filename='dist/main.js') }}"></script>
     {% endif %}
     
-    <!-- Fallback CSS for when Vite isn't running -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -387,9 +385,6 @@
             document.head.appendChild(script);
         }
     </script>
-    
-    <!-- Legacy JS fallback -->
-    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     
     {% block extra_scripts %}{% endblock %}
 </body>

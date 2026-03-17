@@ -1,422 +1,144 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title" class="animate-on-scroll">
-            <span class="glow-text">Let's Connect</span> 🤝
-        </h1>
-        <p class="page-subtitle animate-on-scroll" style="animation-delay: 0.2s;">
-            I'm always open to discussing new opportunities, collaborations, or just having a chat!
-        </p>
-    </div>
-</section>
+<section class="section" aria-labelledby="page-title">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h1 id="page-title" class="section-title">Let's Connect 🤝</h1>
+            <p class="section-subtitle mx-auto">I'm always open to discussing new opportunities, collaborations, or just having a chat!</p>
+        </div>
 
-<section class="contact-section" aria-labelledby="contact-heading">
-    <div class="container">
-        <div class="contact-grid">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <!-- Contact Info Cards -->
-            <div class="contact-info">
-                <h2 id="contact-heading" class="sr-only">Contact Information</h2>
-                
-                <div class="contact-card animate-on-scroll card-3d" style="animation-delay: 0.1s;">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="mailto:12mshayan@gmail.com" class="contact-link magnetic-btn">12mshayan@gmail.com</a>
-                    <p class="contact-hint">Best for formal inquiries</p>
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Contact information">
+                <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-3" aria-hidden="true">📧</div>
+                    <h3 class="text-primary-400 font-semibold mb-2">Email</h3>
+                    <a href="mailto:12mshayan@gmail.com" class="text-white hover:text-primary-300 transition-colors font-medium text-sm break-all">12mshayan@gmail.com</a>
+                    <p class="text-slate-500 text-xs mt-1">Best for formal inquiries</p>
+                </article>
 
-                <div class="contact-card animate-on-scroll card-3d" style="animation-delay: 0.2s;">
-                    <div class="contact-icon">📱</div>
-                    <h3>Phone</h3>
-                    <a href="tel:+393447744985" class="contact-link magnetic-btn">+39 344 774 4985</a>
-                    <p class="contact-hint">Available Mon-Fri, 9AM-6PM CET</p>
-                </div>
+                <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-3" aria-hidden="true">📱</div>
+                    <h3 class="text-primary-400 font-semibold mb-2">Phone</h3>
+                    <a href="tel:+393447744985" class="text-white hover:text-primary-300 transition-colors font-medium text-sm">+39 344 774 4985</a>
+                    <p class="text-slate-500 text-xs mt-1">Available Mon–Fri, 9AM–6PM CET</p>
+                </article>
 
-                <div class="contact-card animate-on-scroll card-3d" style="animation-delay: 0.3s;">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/muhammad-shayan-" target="_blank" rel="noopener noreferrer" class="contact-link magnetic-btn">
-                        Connect on LinkedIn
-                    </a>
-                    <p class="contact-hint">Let's grow our network!</p>
-                </div>
+                <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-3" aria-hidden="true">💼</div>
+                    <h3 class="text-primary-400 font-semibold mb-2">LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/muhammad-shayan-" target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary-300 transition-colors font-medium text-sm">Connect on LinkedIn</a>
+                    <p class="text-slate-500 text-xs mt-1">Let's grow our network!</p>
+                </article>
 
-                <div class="contact-card animate-on-scroll card-3d" style="animation-delay: 0.4s;">
-                    <div class="contact-icon">🐙</div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/12mshayan" target="_blank" rel="noopener noreferrer" class="contact-link magnetic-btn">
-                        Check my repos
-                    </a>
-                    <p class="contact-hint">See my code in action</p>
-                </div>
+                <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-3" aria-hidden="true">🐙</div>
+                    <h3 class="text-primary-400 font-semibold mb-2">GitHub</h3>
+                    <a href="https://github.com/12mshayan" target="_blank" rel="noopener noreferrer" class="text-white hover:text-primary-300 transition-colors font-medium text-sm">Check my repos</a>
+                    <p class="text-slate-500 text-xs mt-1">See my code in action</p>
+                </article>
 
-                <div class="contact-card animate-on-scroll card-3d" style="animation-delay: 0.5s;">
-                    <div class="contact-icon">📍</div>
-                    <h3>Location</h3>
-                    <span class="contact-text">Amsterdam, Netherlands 🇳🇱</span>
-                    <p class="contact-hint">Open to remote & relocation</p>
-                </div>
+                <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-3" aria-hidden="true">📍</div>
+                    <h3 class="text-primary-400 font-semibold mb-2">Location</h3>
+                    <span class="text-white font-medium text-sm">Amsterdam, Netherlands 🇳🇱</span>
+                    <p class="text-slate-500 text-xs mt-1">Open to remote &amp; relocation</p>
+                </article>
 
-                <div class="contact-card animate-on-scroll card-3d" style="animation-delay: 0.6s;">
-                    <div class="contact-icon">🌍</div>
-                    <h3>Languages</h3>
-                    <span class="contact-text">English • Punjabi • Urdu • Hindi</span>
-                    <p class="contact-hint">Let's communicate!</p>
-                </div>
+                <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-3" aria-hidden="true">🌍</div>
+                    <h3 class="text-primary-400 font-semibold mb-2">Languages</h3>
+                    <span class="text-white font-medium text-sm">English • Punjabi • Urdu • Hindi</span>
+                    <p class="text-slate-500 text-xs mt-1">Let's communicate!</p>
+                </article>
             </div>
 
             <!-- Contact Form -->
-            <div class="contact-form-container animate-on-scroll" style="animation-delay: 0.3s;">
-                <div class="form-header">
-                    <h2>📬 Send a Message</h2>
-                    <p>Have a project idea or opportunity? I'd love to hear about it!</p>
+            <div class="glass-card p-6 md:p-8">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-white mb-2">📬 Send a Message</h2>
+                    <p class="text-slate-400">Have a project idea or opportunity? I'd love to hear about it!</p>
                 </div>
 
-                <form method="POST" action="{{ url_for('contact.contact') }}" class="contact-form" novalidate>
+                <form method="POST" action="{{ url_for('contact.contact') }}" novalidate>
                     {{ form.hidden_tag() }}
 
-                    <div class="form-group">
-                        {{ form.name.label(class="form-label") }}
-                        <div class="input-wrapper">
-                            <span class="input-icon">👤</span>
-                            {{ form.name(class="form-input" + (" is-invalid" if form.name.errors else ""), placeholder="Your name") }}
+                    <div class="space-y-4">
+                        <div>
+                            {{ form.name.label(class="block text-sm font-medium text-slate-300 mb-1.5") }}
+                            {{ form.name(class="input" + (" border-red-500/50" if form.name.errors else ""), placeholder="Your name") }}
+                            {% if form.name.errors %}
+                            <p class="mt-1 text-red-400 text-xs" role="alert">{% for e in form.name.errors %}{{ e }}{% endfor %}</p>
+                            {% endif %}
                         </div>
-                        {% if form.name.errors %}
-                        <div class="form-error" role="alert">
-                            {% for error in form.name.errors %}{{ error }}{% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
 
-                    <div class="form-group">
-                        {{ form.email.label(class="form-label") }}
-                        <div class="input-wrapper">
-                            <span class="input-icon">📧</span>
-                            {{ form.email(class="form-input" + (" is-invalid" if form.email.errors else ""), placeholder="your.email@example.com") }}
+                        <div>
+                            {{ form.email.label(class="block text-sm font-medium text-slate-300 mb-1.5") }}
+                            {{ form.email(class="input" + (" border-red-500/50" if form.email.errors else ""), placeholder="your.email@example.com") }}
+                            {% if form.email.errors %}
+                            <p class="mt-1 text-red-400 text-xs" role="alert">{% for e in form.email.errors %}{{ e }}{% endfor %}</p>
+                            {% endif %}
                         </div>
-                        {% if form.email.errors %}
-                        <div class="form-error" role="alert">
-                            {% for error in form.email.errors %}{{ error }}{% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
 
-                    <div class="form-group">
-                        {{ form.subject.label(class="form-label") }}
-                        <div class="input-wrapper">
-                            <span class="input-icon">📝</span>
-                            {{ form.subject(class="form-input" + (" is-invalid" if form.subject.errors else ""), placeholder="What's this about?") }}
+                        <div>
+                            {{ form.subject.label(class="block text-sm font-medium text-slate-300 mb-1.5") }}
+                            {{ form.subject(class="input" + (" border-red-500/50" if form.subject.errors else ""), placeholder="What's this about?") }}
+                            {% if form.subject.errors %}
+                            <p class="mt-1 text-red-400 text-xs" role="alert">{% for e in form.subject.errors %}{{ e }}{% endfor %}</p>
+                            {% endif %}
                         </div>
-                        {% if form.subject.errors %}
-                        <div class="form-error" role="alert">
-                            {% for error in form.subject.errors %}{{ error }}{% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
 
-                    <div class="form-group">
-                        {{ form.message.label(class="form-label") }}
-                        <div class="input-wrapper textarea-wrapper">
-                            <span class="input-icon">💬</span>
-                            {{ form.message(class="form-textarea" + (" is-invalid" if form.message.errors else ""), placeholder="Tell me about your project, opportunity, or just say hi!") }}
+                        <div>
+                            {{ form.message.label(class="block text-sm font-medium text-slate-300 mb-1.5") }}
+                            {{ form.message(class="textarea" + (" border-red-500/50" if form.message.errors else ""), placeholder="Tell me about your project, opportunity, or just say hi!") }}
+                            {% if form.message.errors %}
+                            <p class="mt-1 text-red-400 text-xs" role="alert">{% for e in form.message.errors %}{{ e }}{% endfor %}</p>
+                            {% endif %}
                         </div>
-                        {% if form.message.errors %}
-                        <div class="form-error" role="alert">
-                            {% for error in form.message.errors %}{{ error }}{% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
 
-                    <button type="submit" class="btn btn-primary btn-large btn-glow magnetic-btn">
-                        <span>🚀 Send Message</span>
-                    </button>
+                        <button type="submit" class="btn-primary w-full">
+                            🚀 Send Message
+                        </button>
 
-                    <p class="form-privacy-notice">
-                        <small>
+                        <p class="text-center text-slate-500 text-xs">
                             🔒 Your data is safe with me. See my
-                            <a href="{{ url_for('privacy.privacy_policy') }}">Privacy Policy</a>.
-                        </small>
-                    </p>
+                            <a href="{{ url_for('privacy.privacy_policy') }}" class="text-primary-400 hover:text-primary-300 transition-colors">Privacy Policy</a>.
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
 
-        <!-- Fun CTA Section -->
-        <div class="contact-cta animate-on-scroll" style="animation-delay: 0.5s;">
-            <div class="cta-content">
-                <h3>🎯 Currently Open For</h3>
-                <div class="cta-tags">
-                    <span class="cta-tag pulse">Graduate Positions</span>
-                    <span class="cta-tag pulse" style="animation-delay: 0.1s;">Research Collaborations</span>
-                    <span class="cta-tag pulse" style="animation-delay: 0.2s;">Sustainability Projects</span>
-                    <span class="cta-tag pulse" style="animation-delay: 0.3s;">Freelance Work</span>
-                    <span class="cta-tag pulse" style="animation-delay: 0.4s;">Coffee Chats ☕</span>
-                </div>
+        <!-- Currently Open For -->
+        <div class="glass-card p-8 mt-12 text-center">
+            <h2 class="text-xl font-bold text-white mb-6">🎯 Currently Open For</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="btn-primary text-sm animate-pulse-glow">Graduate Positions</span>
+                <span class="btn-secondary text-sm">Research Collaborations</span>
+                <span class="btn-secondary text-sm">Sustainability Projects</span>
+                <span class="btn-secondary text-sm">Freelance Work</span>
+                <span class="btn-secondary text-sm">Coffee Chats ☕</span>
             </div>
         </div>
 
         <!-- Social Links -->
-        <div class="social-links-section animate-on-scroll" style="animation-delay: 0.6s;">
-            <h3>🌐 Find Me Online</h3>
-            <div class="social-grid">
-                <a href="https://www.linkedin.com/in/muhammad-shayan-" target="_blank" rel="noopener noreferrer" class="social-link magnetic-btn" aria-label="LinkedIn Profile">
-                    <span class="social-icon">💼</span>
-                    <span>LinkedIn</span>
+        <div class="mt-12 text-center">
+            <h2 class="text-xl font-bold text-white mb-6">🌐 Find Me Online</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.linkedin.com/in/muhammad-shayan-" target="_blank" rel="noopener noreferrer"
+                   class="btn-secondary" aria-label="LinkedIn Profile">
+                    💼 LinkedIn
                 </a>
-                <a href="https://github.com/12mshayan" target="_blank" rel="noopener noreferrer" class="social-link magnetic-btn" aria-label="GitHub Profile">
-                    <span class="social-icon">🐙</span>
-                    <span>GitHub</span>
+                <a href="https://github.com/12mshayan" target="_blank" rel="noopener noreferrer"
+                   class="btn-secondary" aria-label="GitHub Profile">
+                    🐙 GitHub
                 </a>
-                <a href="mailto:12mshayan@gmail.com" class="social-link magnetic-btn" aria-label="Email">
-                    <span class="social-icon">📧</span>
-                    <span>Email</span>
+                <a href="mailto:12mshayan@gmail.com" class="btn-secondary" aria-label="Email">
+                    📧 Email
                 </a>
             </div>
         </div>
     </div>
 </section>
-
-<style>
-/* Contact Page Specific Styles */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 2rem;
-}
-
-.contact-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-}
-
-.contact-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    border-radius: 20px;
-    padding: 1.5rem;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-    border-color: var(--color-primary);
-}
-
-.contact-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-primary);
-}
-
-.contact-link {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-    color: var(--color-primary);
-}
-
-.contact-text {
-    font-weight: 600;
-}
-
-.contact-hint {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-    margin-top: 0.5rem;
-}
-
-/* Form Styles */
-.contact-form-container {
-    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border-radius: 30px;
-    padding: 2.5rem;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.form-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.form-header h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.form-header p {
-    color: var(--color-text-muted);
-}
-
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-icon {
-    position: absolute;
-    left: 1rem;
-    font-size: 1.2rem;
-    z-index: 1;
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    color: var(--color-text);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-    background: rgba(255,255,255,0.08);
-}
-
-.textarea-wrapper {
-    align-items: flex-start;
-}
-
-.textarea-wrapper .input-icon {
-    top: 1rem;
-}
-
-.form-textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.btn-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* CTA Section */
-.contact-cta {
-    margin-top: 4rem;
-    text-align: center;
-    padding: 3rem;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-    border-radius: 30px;
-    border: 1px solid rgba(102, 126, 234, 0.2);
-}
-
-.contact-cta h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.cta-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.cta-tag {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-/* Social Links */
-.social-links-section {
-    margin-top: 3rem;
-    text-align: center;
-}
-
-.social-links-section h3 {
-    margin-bottom: 1.5rem;
-}
-
-.social-grid {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(255,255,255,0.1);
-    border-radius: 50px;
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    border-color: transparent;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-}
-
-.social-icon {
-    font-size: 1.3rem;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-info {
-        order: 2;
-    }
-    
-    .contact-form-container {
-        order: 1;
-    }
-}
-
-@media (max-width: 600px) {
-    .contact-info {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-form-container {
-        padding: 1.5rem;
-    }
-    
-    .cta-tags {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .social-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-</style>
 {% endblock %}

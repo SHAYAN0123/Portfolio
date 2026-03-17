@@ -1,131 +1,142 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title" class="glow-text" data-text="About Me">👋 About Me</h1>
-        <p class="page-subtitle">The story behind the code</p>
-    </div>
-</section>
+<!-- Hero -->
+<section class="section" aria-labelledby="page-title">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h1 id="page-title" class="section-title">👋 About Me</h1>
+            <p class="section-subtitle mx-auto">The story behind the code</p>
+        </div>
 
-<section class="about-content" aria-labelledby="about-heading">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image animate-on-scroll">
-                <div class="image-placeholder float-element" role="img" aria-label="Muhammad Shayan profile photo">
-                    <span aria-hidden="true">👨‍💻</span>
+        <!-- Main about grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start mb-20">
+            <!-- Avatar column -->
+            <div class="lg:col-span-2 flex justify-center">
+                <div class="w-48 h-48 md:w-64 md:h-64 rounded-3xl glass-card flex items-center justify-center text-8xl" role="img" aria-label="Muhammad Shayan profile photo">
+                    👨‍💻
                 </div>
             </div>
-            <div class="about-text animate-on-scroll animate-delay-2">
-                <h2 id="about-heading">Hi, I'm <span class="glow-text" data-text="Muhammad Shayan">Muhammad Shayan</span></h2>
-                <p class="about-tagline">
-                    🎓 Erasmus Mundus Scholar (SE4GD) | � Software Engineer | ☁️ Cloud Enthusiast
+
+            <!-- Text column -->
+            <div class="lg:col-span-3 space-y-5">
+                <h2 class="text-2xl md:text-3xl font-bold text-white">
+                    Hi, I'm <span class="gradient-text">Muhammad Shayan</span>
+                </h2>
+                <p class="text-primary-300 font-medium">
+                    🎓 Erasmus Mundus Scholar (SE4GD) | 💻 Software Engineer | ☁️ Cloud Enthusiast
                 </p>
-                <p>
-                    I'm currently pursuing a Master's degree in Computer Science as part of the 
-                    <strong>Erasmus Mundus Software Engineers for Green Deal (SE4GD)</strong> program 
-                    across four prestigious universities: University of Amsterdam, VU Amsterdam, 
+                <p class="text-slate-300 leading-relaxed">
+                    I'm currently pursuing a Master's degree in Computer Science as part of the
+                    <strong class="text-white">Erasmus Mundus Software Engineers for Green Deal (SE4GD)</strong> program
+                    across four prestigious universities: University of Amsterdam, VU Amsterdam,
                     LUT University, and Università degli Studi dell'Aquila.
                 </p>
-                <div class="se4gd-note">
-                    <p><strong>What is SE4GD?</strong> It's an EU-funded Erasmus Mundus Joint Master's program that trains software engineers to build sustainable, environmentally-conscious software solutions. The program focuses on green computing, energy-efficient systems, and leveraging technology to address climate challenges — aligning software development with the European Green Deal goals.</p>
+                <div class="glass-card p-4 border-l-4 border-primary-500">
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        <strong class="text-white">What is SE4GD?</strong> It's an EU-funded Erasmus Mundus Joint Master's program that trains software engineers to build sustainable, environmentally-conscious software solutions. The program focuses on green computing, energy-efficient systems, and leveraging technology to address climate challenges — aligning software development with the European Green Deal goals.
+                    </p>
                 </div>
-                <p>
-                    My academic journey includes a Bachelor of Science in Software Engineering from 
-                    Liverpool John Moores University, where I built a strong foundation in computer 
-                    science principles.
+                <p class="text-slate-300 leading-relaxed">
+                    My academic journey includes a Bachelor of Science in Software Engineering from
+                    Liverpool John Moores University, where I built a strong foundation in computer science principles.
                 </p>
-                <p>
-                    Currently, I'm working as a Graduate Thesis Research Intern at <strong>Schuberg Philis</strong> 
+                <p class="text-slate-300 leading-relaxed">
+                    Currently, I'm working as a Graduate Thesis Research Intern at <strong class="text-white">Schuberg Philis</strong>
                     in Amsterdam, contributing to innovative projects in systems design and large language model development.
                 </p>
-                
-                <div class="about-stats stagger-children">
-                    <div class="stat-item">
-                        <span class="stat-number" data-counter="4">0</span>
-                        <span class="stat-label">Universities</span>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+                    <div x-data="counter(4)" x-intersect.once="animate()" class="glass-card p-4 text-center">
+                        <span class="text-3xl font-black gradient-text" x-text="Math.round(count)">0</span>
+                        <span class="block text-xs text-slate-400 mt-1">Universities</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-counter="5">0</span>+
-                        <span class="stat-label">Internships</span>
+                    <div x-data="counter(5)" x-intersect.once="animate()" class="glass-card p-4 text-center">
+                        <span class="text-3xl font-black gradient-text" x-text="Math.round(count)">0</span><span class="text-3xl font-black gradient-text">+</span>
+                        <span class="block text-xs text-slate-400 mt-1">Internships</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-counter="4">0</span>
-                        <span class="stat-label">Languages</span>
+                    <div x-data="counter(4)" x-intersect.once="animate()" class="glass-card p-4 text-center">
+                        <span class="text-3xl font-black gradient-text" x-text="Math.round(count)">0</span>
+                        <span class="block text-xs text-slate-400 mt-1">Languages</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-counter="4">0</span>
-                        <span class="stat-label">Countries</span>
+                    <div x-data="counter(4)" x-intersect.once="animate()" class="glass-card p-4 text-center">
+                        <span class="text-3xl font-black gradient-text" x-text="Math.round(count)">0</span>
+                        <span class="block text-xs text-slate-400 mt-1">Countries</span>
                     </div>
                 </div>
-                
-                <a href="{{ url_for('contact.contact') }}" class="btn btn-primary btn-large magnetic-btn">
-                    💬 Let's Connect
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="education-section" aria-labelledby="education-title">
-    <div class="container">
-        <h2 id="education-title" class="section-title glow-text" data-text="Education">🎓 Education</h2>
-        <div class="education-grid stagger-children">
-            <article class="education-card interactive-card">
-                <div class="education-icon">🇳🇱</div>
-                <h3>University of Amsterdam & VU Amsterdam</h3>
-                <p class="education-degree">Master's in Computer Science (Joint Degree)</p>
-                <p class="education-date">Sep 2024 - Sep 2026</p>
-                <span class="badge">Erasmus Mundus SE4GD</span>
-            </article>
-            
-            <article class="education-card interactive-card">
-                <div class="education-icon">🇫🇮</div>
-                <h3>LUT University</h3>
-                <p class="education-degree">Master's in Computer Software Engineering</p>
-                <p class="education-date">Sep 2024 - Aug 2026</p>
-                <span class="badge">Erasmus Mundus SE4GD</span>
-            </article>
-            
-            <article class="education-card interactive-card">
-                <div class="education-icon">🇮🇹</div>
-                <h3>Università degli Studi dell'Aquila</h3>
-                <p class="education-degree">Master's in Computer Software Engineering</p>
-                <p class="education-date">Sep 2024 - Aug 2026</p>
-                <span class="badge">Erasmus Mundus SE4GD</span>
-            </article>
-            
-            <article class="education-card interactive-card">
-                <div class="education-icon">🇬🇧</div>
-                <h3>Liverpool John Moores University</h3>
-                <p class="education-degree">BSc Software Engineering</p>
-                <p class="education-date">Oct 2021 - Jul 2024</p>
-            </article>
+                <div class="pt-2">
+                    <a href="{{ url_for('contact.contact') }}" class="btn-primary">
+                        💬 Let's Connect
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
 
-<section class="languages-section" aria-labelledby="languages-title">
-    <div class="container">
-        <h2 id="languages-title" class="section-title">🌍 Languages</h2>
-        <div class="languages-grid stagger-children">
-            <div class="language-item interactive-card">
-                <span class="language-name">English</span>
-                <span class="language-level">Full Professional</span>
+        <!-- Education -->
+        <section aria-labelledby="education-title" class="mb-20">
+            <h2 id="education-title" class="section-title text-center mb-10">🎓 Education</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <article class="interactive-card" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-4" aria-hidden="true">🇳🇱</div>
+                    <h3 class="text-lg font-bold text-white mb-1">University of Amsterdam &amp; VU Amsterdam</h3>
+                    <p class="text-primary-400 font-medium text-sm mb-1">Master's in Computer Science (Joint Degree)</p>
+                    <p class="text-slate-500 text-sm mb-3">Sep 2024 – Sep 2026</p>
+                    <span class="badge">Erasmus Mundus SE4GD</span>
+                </article>
+
+                <article class="interactive-card" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-4" aria-hidden="true">🇫🇮</div>
+                    <h3 class="text-lg font-bold text-white mb-1">LUT University</h3>
+                    <p class="text-primary-400 font-medium text-sm mb-1">Master's in Computer Software Engineering</p>
+                    <p class="text-slate-500 text-sm mb-3">Sep 2024 – Aug 2026</p>
+                    <span class="badge">Erasmus Mundus SE4GD</span>
+                </article>
+
+                <article class="interactive-card" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-4" aria-hidden="true">🇮🇹</div>
+                    <h3 class="text-lg font-bold text-white mb-1">Università degli Studi dell'Aquila</h3>
+                    <p class="text-primary-400 font-medium text-sm mb-1">Master's in Computer Software Engineering</p>
+                    <p class="text-slate-500 text-sm mb-3">Sep 2024 – Aug 2026</p>
+                    <span class="badge">Erasmus Mundus SE4GD</span>
+                </article>
+
+                <article class="interactive-card" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                    <div class="text-4xl mb-4" aria-hidden="true">🇬🇧</div>
+                    <h3 class="text-lg font-bold text-white mb-1">Liverpool John Moores University</h3>
+                    <p class="text-primary-400 font-medium text-sm mb-1">BSc Software Engineering</p>
+                    <p class="text-slate-500 text-sm">Oct 2021 – Jul 2024</p>
+                </article>
             </div>
-            <div class="language-item interactive-card">
-                <span class="language-name">Urdu</span>
-                <span class="language-level">Native</span>
+        </section>
+
+        <!-- Languages -->
+        <section aria-labelledby="languages-title">
+            <h2 id="languages-title" class="section-title text-center mb-10">🌍 Languages</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="interactive-card text-center">
+                    <div class="text-3xl mb-2">🇬🇧</div>
+                    <p class="font-semibold text-white">English</p>
+                    <p class="text-slate-400 text-sm">Full Professional</p>
+                </div>
+                <div class="interactive-card text-center">
+                    <div class="text-3xl mb-2">🇵🇰</div>
+                    <p class="font-semibold text-white">Urdu</p>
+                    <p class="text-slate-400 text-sm">Native</p>
+                </div>
+                <div class="interactive-card text-center">
+                    <div class="text-3xl mb-2">🇵🇰</div>
+                    <p class="font-semibold text-white">Punjabi</p>
+                    <p class="text-slate-400 text-sm">Native</p>
+                </div>
+                <div class="interactive-card text-center">
+                    <div class="text-3xl mb-2">🇮🇳</div>
+                    <p class="font-semibold text-white">Hindi</p>
+                    <p class="text-slate-400 text-sm">Native</p>
+                </div>
             </div>
-            <div class="language-item interactive-card">
-                <span class="language-name">Punjabi</span>
-                <span class="language-level">Native</span>
-            </div>
-            <div class="language-item interactive-card">
-                <span class="language-name">Hindi</span>
-                <span class="language-level">Native</span>
-            </div>
-        </div>
+        </section>
     </div>
 </section>
 {% endblock %}

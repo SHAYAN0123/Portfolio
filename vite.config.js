@@ -14,9 +14,9 @@ export default defineConfig({
         styles: resolve(__dirname, 'static/src/styles.css'),
       },
       output: {
-        entryFileNames: '[name]-[hash].js',
+        entryFileNames: '[name].js',
         chunkFileNames: '[name]-[hash].js',
-        assetFileNames: '[name]-[hash].[ext]',
+        assetFileNames: '[name].[ext]',
       },
     },
   },

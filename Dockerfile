@@ -5,6 +5,18 @@
 #           Kubernetes (any provider), Docker Compose, Railway, Render, Fly.io
 # =============================================================================
 
+# =============================================================================
+# Frontend build stage
+# =============================================================================
+FROM node:20-slim AS frontend-builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --no-audit --no-fund
+COPY static/src/ ./static/src/
+COPY tailwind.config.js postcss.config.js vite.config.js ./
+COPY templates/ ./templates/
+RUN npm run build
+
 # Build stage
 FROM python:3.11-slim AS builder
 
@@ -50,6 +62,9 @@ RUN pip install --no-cache /wheels/* && rm -rf /wheels
 COPY src/ ./src/
 COPY templates/ ./templates/
 COPY static/ ./static/
+
+# Copy built frontend assets from frontend-builder
+COPY --from=frontend-builder /app/static/dist ./static/dist
 
 # Create necessary directories with proper permissions
 RUN mkdir -p logs data && chown -R portfolio:portfolio /app

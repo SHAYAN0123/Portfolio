@@ -2,7 +2,7 @@
 export default {
   content: [
     "./templates/**/*.html",
-    "./static/js/**/*.js",
+    "./static/src/**/*.js",
   ],
   darkMode: 'class',
   theme: {

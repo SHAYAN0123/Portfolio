@@ -1,39 +1,43 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title">Privacy Policy</h1>
-        <p class="page-subtitle">Last updated: February 2026</p>
+<div class="section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+        <h1 id="page-title" class="section-title">Privacy Policy</h1>
+        <p class="text-slate-500 text-sm">Last updated: February 2026</p>
     </div>
-</section>
 
-<section class="legal-content">
-    <div class="container">
-        <article class="legal-article">
-            <h2>Introduction</h2>
-            <p>This Privacy Policy explains how we collect, use, and protect your information.</p>
+    <div class="space-y-6">
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Introduction</h2>
+            <p class="text-slate-300 leading-relaxed">This Privacy Policy explains how we collect, use, and protect your information when you use this portfolio website.</p>
+        </div>
 
-            <h2>Information We Collect</h2>
-            <p>We collect information you provide through our contact form:</p>
-            <ul>
-                <li>Name</li>
-                <li>Email address</li>
-                <li>Message content</li>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Information We Collect</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">We collect information you provide through our contact form:</p>
+            <ul class="space-y-2 text-slate-300">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Name</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Email address</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Message content</li>
             </ul>
+        </div>
 
-            <h2>Your Rights (GDPR)</h2>
-            <p>You have the right to:</p>
-            <ul>
-                <li>Access your personal data</li>
-                <li>Request correction of your data</li>
-                <li>Request deletion of your data</li>
-                <li>Object to processing of your data</li>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Your Rights (GDPR)</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">You have the right to:</p>
+            <ul class="space-y-2 text-slate-300">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Access your personal data</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Request correction of your data</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Request deletion of your data</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0"></span>Object to processing of your data</li>
             </ul>
+        </div>
 
-            <h2>Contact Us</h2>
-            <p>For privacy-related inquiries, contact us at: <a href="mailto:privacy@example.com">privacy@example.com</a></p>
-        </article>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Contact Us</h2>
+            <p class="text-slate-300 leading-relaxed">For privacy-related inquiries, contact us at: <a href="mailto:12mshayan@gmail.com" class="text-primary-400 hover:text-primary-300 transition-colors">12mshayan@gmail.com</a></p>
+        </div>
     </div>
-</section>
+</div>
 {% endblock %}

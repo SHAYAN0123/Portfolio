@@ -1,424 +1,184 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title" class="animate-on-scroll">
-            <span class="glow-text">Experience & Projects</span> 🚀
-        </h1>
-        <p class="page-subtitle animate-on-scroll" style="animation-delay: 0.2s;">
-            Building impactful solutions across sustainability, IoT, and enterprise software
-        </p>
-    </div>
-</section>
-
-<section class="projects-section" aria-labelledby="projects-heading">
-    <div class="container">
-        <h2 id="projects-heading" class="sr-only">Work Experience and Projects</h2>
+<section class="section" aria-labelledby="page-title">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h1 id="page-title" class="section-title">Experience &amp; Projects 🚀</h1>
+            <p class="section-subtitle mx-auto">Building impactful solutions across sustainability, IoT, and enterprise software</p>
+        </div>
 
         <!-- Experience Timeline -->
-        <div class="experience-timeline">
+        <div class="space-y-6 mb-16" aria-label="Work experience timeline">
 
             <!-- Schuberg Philis -->
-            <div class="experience-card animate-on-scroll card-3d" style="animation-delay: 0.1s;">
-                <div class="exp-header">
-                    <div class="exp-icon">🔬</div>
-                    <div class="exp-meta">
-                        <span class="exp-date">November 2025 - Present</span>
-                        <span class="exp-location">📍 Amsterdam, Netherlands</span>
+            <article class="glass-card p-6 md:p-8 relative border-l-4 border-emerald-500/50 hover:translate-x-1 transition-transform duration-300">
+                <div class="absolute top-4 right-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        🟢 Current Role
+                    </span>
+                </div>
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-4xl" aria-hidden="true">🔬</span>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-1">
+                            <span class="text-primary-400 text-sm font-semibold">November 2025 – Present</span>
+                            <span class="text-slate-500 text-sm">📍 Amsterdam, Netherlands</span>
+                        </div>
+                        <h2 class="text-xl font-bold gradient-text">Graduate Thesis Research Intern</h2>
+                        <p class="text-primary-400 font-semibold">Schuberg Philis</p>
                     </div>
                 </div>
-                <h3 class="exp-title">Graduate Thesis Research Intern</h3>
-                <p class="exp-company">Schuberg Philis</p>
-                <div class="exp-description">
-                    <p>Contributing to innovative projects at a leading mission-critical IT company, leveraging expertise in systems design and large language model development for my Master's thesis research.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">Contributing to innovative projects at a leading mission-critical IT company, leveraging expertise in systems design and large language model development for my Master's thesis research.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Systems Design</span>
+                    <span class="skill-tag">LLM Development</span>
+                    <span class="skill-tag">Research</span>
+                    <span class="skill-tag">Python</span>
                 </div>
-                <div class="exp-tags">
-                    <span class="exp-tag">Systems Design</span>
-                    <span class="exp-tag">LLM Development</span>
-                    <span class="exp-tag">Research</span>
-                    <span class="exp-tag">Python</span>
-                </div>
-                <div class="exp-status current">
-                    <span>🟢 Current Role</span>
-                </div>
-            </div>
+            </article>
 
             <!-- Elisa -->
-            <div class="experience-card animate-on-scroll card-3d" style="animation-delay: 0.2s;">
-                <div class="exp-header">
-                    <div class="exp-icon">📱</div>
-                    <div class="exp-meta">
-                        <span class="exp-date">February 2025 - June 2025</span>
-                        <span class="exp-location">📍 Finland</span>
+            <article class="glass-card p-6 md:p-8 border-l-4 border-primary-500/50 hover:translate-x-1 transition-transform duration-300">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-4xl" aria-hidden="true">📱</span>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-1">
+                            <span class="text-primary-400 text-sm font-semibold">February 2025 – June 2025</span>
+                            <span class="text-slate-500 text-sm">📍 Finland</span>
+                        </div>
+                        <h2 class="text-xl font-bold gradient-text">Scrum Master</h2>
+                        <p class="text-primary-400 font-semibold">Elisa</p>
                     </div>
                 </div>
-                <h3 class="exp-title">Scrum Master</h3>
-                <p class="exp-company">Elisa</p>
-                <div class="exp-description">
-                    <ul>
-                        <li>Directed a 4-member cross-functional team, facilitating sprint planning, retrospectives, and backlog refinement to deliver a cloud-deployed MVP.</li>
-                        <li>Coordinated with 3 Elisa project teams through workshops and joint reviews, aligning system architecture, integration requirements, and responsibilities.</li>
-                        <li>Shaped and prioritized the backlog, enabling delivery of an MVP with automated user story generation, reducing reliance on manual backlog preparation.</li>
-                        <li>Piloted sprint cadences (½-week, 1-week, 2-week), improving responsiveness to stakeholder feedback and maintaining consistent delivery.</li>
-                        <li>Embedded sustainability and accessibility goals into sprints, meeting <strong>WCAG 2.1 AA compliance</strong>.</li>
-                        <li>Ensured quality and stability by guiding the team to implement <strong>34+ automated tests</strong> and conduct end-to-end testing across all system components.</li>
-                    </ul>
+                <ul class="space-y-2 mb-4">
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Directed a 4-member cross-functional team, facilitating sprint planning, retrospectives, and backlog refinement to deliver a cloud-deployed MVP.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Coordinated with 3 Elisa project teams through workshops and joint reviews, aligning system architecture, integration requirements, and responsibilities.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Shaped and prioritized the backlog, enabling delivery of an MVP with automated user story generation, reducing reliance on manual backlog preparation.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Embedded sustainability and accessibility goals into sprints, meeting <strong class="text-white">WCAG 2.1 AA compliance</strong>.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Ensured quality and stability by guiding the team to implement <strong class="text-white">34+ automated tests</strong> and conduct end-to-end testing across all system components.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="skill-tag">Scrum Master</span>
+                    <span class="skill-tag">Cloud MVP</span>
+                    <span class="skill-tag">Sprint Planning</span>
+                    <span class="skill-tag">Sustainability</span>
+                    <span class="skill-tag">WCAG 2.1 AA</span>
+                    <span class="skill-tag">Automated Testing</span>
                 </div>
-                <div class="exp-tags">
-                    <span class="exp-tag">Scrum Master</span>
-                    <span class="exp-tag">Cloud MVP</span>
-                    <span class="exp-tag">Sprint Planning</span>
-                    <span class="exp-tag">Sustainability</span>
-                    <span class="exp-tag">WCAG 2.1 AA</span>
-                    <span class="exp-tag">Automated Testing</span>
+                <div class="flex flex-wrap gap-2 pt-3 border-t border-white/10">
+                    <span class="badge badge-success">♿ WCAG 2.1 AA</span>
+                    <span class="badge badge-success">🧪 34+ Tests</span>
                 </div>
-                <div class="exp-achievements">
-                    <span class="achievement">♿ WCAG 2.1 AA</span>
-                    <span class="achievement">🧪 34+ Tests</span>
-                </div>
-            </div>
+            </article>
 
             <!-- Oak Street Technologies -->
-            <div class="experience-card animate-on-scroll card-3d" style="animation-delay: 0.3s;">
-                <div class="exp-header">
-                    <div class="exp-icon">📊</div>
-                    <div class="exp-meta">
-                        <span class="exp-date">May 2024 - August 2024</span>
-                        <span class="exp-location">📍 Islamabad, Pakistan</span>
+            <article class="glass-card p-6 md:p-8 border-l-4 border-secondary-500/50 hover:translate-x-1 transition-transform duration-300">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-4xl" aria-hidden="true">📊</span>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-1">
+                            <span class="text-primary-400 text-sm font-semibold">May 2024 – August 2024</span>
+                            <span class="text-slate-500 text-sm">📍 Islamabad, Pakistan</span>
+                        </div>
+                        <h2 class="text-xl font-bold gradient-text">Business Analyst</h2>
+                        <p class="text-primary-400 font-semibold">Oak Street Technologies</p>
                     </div>
                 </div>
-                <h3 class="exp-title">Business Analyst</h3>
-                <p class="exp-company">Oak Street Technologies</p>
-                <div class="exp-description">
-                    <ul>
-                        <li>Selected as the only intern to be onboarded on two flagship projects with the product team, contributing to significant project milestones.</li>
-                        <li>Collaborated closely with the product team to create detailed user stories, which led to measurable improvements in project workflows and efficiency.</li>
-                        <li>Supported the development of user requirements and ensured alignment with business goals, enhancing overall project outcomes.</li>
-                        <li>Demonstrated strong analytical skills by assisting in identifying key areas for process optimization and providing actionable insights to the team.</li>
-                        <li>Consistently met deadlines while contributing to cross-functional collaboration, improving communication flow between departments.</li>
-                        <li>Exhibited excellent adaptability in a fast-paced environment, quickly integrating into the project team and taking on challenging responsibilities.</li>
-                    </ul>
+                <ul class="space-y-2 mb-4">
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Selected as the only intern to be onboarded on two flagship projects with the product team, contributing to significant project milestones.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Collaborated closely with the product team to create detailed user stories, leading to measurable improvements in project workflows and efficiency.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Demonstrated strong analytical skills by assisting in identifying key areas for process optimization and providing actionable insights to the team.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Exhibited excellent adaptability in a fast-paced environment, quickly integrating into the project team and taking on challenging responsibilities.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="skill-tag">Business Analysis</span>
+                    <span class="skill-tag">User Stories</span>
+                    <span class="skill-tag">Requirements</span>
+                    <span class="skill-tag">Process Optimization</span>
+                    <span class="skill-tag">Cross-functional</span>
                 </div>
-                <div class="exp-tags">
-                    <span class="exp-tag">Business Analysis</span>
-                    <span class="exp-tag">User Stories</span>
-                    <span class="exp-tag">Requirements</span>
-                    <span class="exp-tag">Process Optimization</span>
-                    <span class="exp-tag">Cross-functional</span>
+                <div class="pt-3 border-t border-white/10">
+                    <span class="badge badge-warning">🏆 Only Intern on 2 Flagship Projects</span>
                 </div>
-                <div class="exp-achievements">
-                    <span class="achievement">🏆 Only Intern on 2 Flagship Projects</span>
-                </div>
-            </div>
+            </article>
 
             <!-- MRS Technologies -->
-            <div class="experience-card animate-on-scroll card-3d" style="animation-delay: 0.4s;">
-                <div class="exp-header">
-                    <div class="exp-icon">🌿</div>
-                    <div class="exp-meta">
-                        <span class="exp-date">July 2023 - August 2023</span>
-                        <span class="exp-location">📍 Islamabad, Pakistan</span>
+            <article class="glass-card p-6 md:p-8 border-l-4 border-amber-500/50 hover:translate-x-1 transition-transform duration-300">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-4xl" aria-hidden="true">🌿</span>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-1">
+                            <span class="text-primary-400 text-sm font-semibold">July 2023 – August 2023</span>
+                            <span class="text-slate-500 text-sm">📍 Islamabad, Pakistan</span>
+                        </div>
+                        <h2 class="text-xl font-bold gradient-text">Front-End Developer</h2>
+                        <p class="text-primary-400 font-semibold">MRS Technologies</p>
                     </div>
                 </div>
-                <h3 class="exp-title">Front-End Developer</h3>
-                <p class="exp-company">MRS Technologies</p>
-                <div class="exp-description">
-                    <ul>
-                        <li>Achieved distinction by being selected as one of the <strong>top 15 interns from a competitive pool of 13,000 candidates</strong>, demonstrating exceptional research aptitude and potential.</li>
-                        <li>Led the Frontend team in the development of a web portal for an <strong>IoT-based (MVP) microgreens plant system</strong> that tracks plant conditions like soil and ambient temperatures, and humidity.</li>
-                        <li>The platform categorizes plants as healthy or needing attention, facilitating effective plant care and user interaction.</li>
-                        <li>Collaborated with diverse teams (Backend, UI/UX & Embedded) to create an intelligent node that detects and alerts on deviations in optimal plant conditions.</li>
-                        <li>Demonstrated continuous learning in technology, contributing to the MVP project's success and earning the <strong>"High Potential Talent" award</strong>.</li>
-                    </ul>
+                <ul class="space-y-2 mb-4">
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Achieved distinction by being selected as one of the <strong class="text-white">top 15 interns from a competitive pool of 13,000 candidates</strong>.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Led the Frontend team in the development of a web portal for an <strong class="text-white">IoT-based (MVP) microgreens plant system</strong> that tracks plant conditions like soil and ambient temperatures, and humidity.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Collaborated with Backend, UI/UX &amp; Embedded teams to create an intelligent node that detects and alerts on deviations in optimal plant conditions.</li>
+                    <li class="flex gap-2 text-slate-300 text-sm leading-relaxed"><span class="text-primary-400 mt-0.5 flex-shrink-0">▹</span>Earned the <strong class="text-white">"High Potential Talent" award</strong> for contributions to the MVP project's success.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="skill-tag">Frontend Lead</span>
+                    <span class="skill-tag">IoT</span>
+                    <span class="skill-tag">MQTT</span>
+                    <span class="skill-tag">InfluxDB</span>
+                    <span class="skill-tag">Grafana</span>
+                    <span class="skill-tag">MVP</span>
                 </div>
-                <div class="exp-tags">
-                    <span class="exp-tag">Frontend Lead</span>
-                    <span class="exp-tag">IoT</span>
-                    <span class="exp-tag">MQTT</span>
-                    <span class="exp-tag">InfluxDB</span>
-                    <span class="exp-tag">Grafana</span>
-                    <span class="exp-tag">MVP</span>
+                <div class="flex flex-wrap gap-2 pt-3 border-t border-white/10">
+                    <span class="badge badge-warning">🏆 Top 15 of 13,000</span>
+                    <span class="badge badge-warning">⭐ High Potential Talent Award</span>
                 </div>
-                <div class="exp-achievements">
-                    <span class="achievement">🏆 Top 15 of 13,000</span>
-                    <span class="achievement">⭐ High Potential Talent Award</span>
-                </div>
-            </div>
+            </article>
 
             <!-- The Digital Robe -->
-            <div class="experience-card animate-on-scroll card-3d" style="animation-delay: 0.5s;">
-                <div class="exp-header">
-                    <div class="exp-icon">🎨</div>
-                    <div class="exp-meta">
-                        <span class="exp-date">August 2022 - December 2022</span>
-                        <span class="exp-location">📍 Pakistan</span>
+            <article class="glass-card p-6 md:p-8 border-l-4 border-slate-500/50 hover:translate-x-1 transition-transform duration-300">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-4xl" aria-hidden="true">🎨</span>
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-1">
+                            <span class="text-primary-400 text-sm font-semibold">August 2022 – December 2022</span>
+                            <span class="text-slate-500 text-sm">📍 Pakistan</span>
+                        </div>
+                        <h2 class="text-xl font-bold gradient-text">Frontend Web Developer</h2>
+                        <p class="text-primary-400 font-semibold">The Digital Robe</p>
                     </div>
                 </div>
-                <h3 class="exp-title">Frontend Web Developer</h3>
-                <p class="exp-company">The Digital Robe</p>
-                <div class="exp-description">
-                    <ul>
-                        <li>Interned at The Digital Robe, contributing to the front-end development of the company website.</li>
-                        <li>Developed, designed, and cloned the company website using HTML, CSS, Bootstrap, and JavaScript.</li>
-                        <li>Implemented responsive design techniques, ensuring optimal viewing experience across various devices.</li>
-                        <li>Acquired valuable experience in HTML, CSS, Bootstrap, and JavaScript.</li>
-                        <li>Demonstrated understanding of responsive web design principles and best practices.</li>
-                        <li>Received positive feedback on the quality of work and impact on website metrics.</li>
-                    </ul>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">Where it all began! Developed, designed, and cloned the company website using HTML, CSS, Bootstrap, and JavaScript. Implemented responsive design techniques ensuring optimal viewing experience across devices.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Responsive Design</span>
                 </div>
-                <div class="exp-tags">
-                    <span class="exp-tag">HTML</span>
-                    <span class="exp-tag">CSS</span>
-                    <span class="exp-tag">Bootstrap</span>
-                    <span class="exp-tag">JavaScript</span>
-                    <span class="exp-tag">Responsive Design</span>
-                </div>
-            </div>
+            </article>
         </div>
 
         <!-- Summary Stats -->
-        <div class="stats-section animate-on-scroll" style="animation-delay: 0.6s;">
-            <div class="stat-item">
-                <span class="stat-number" data-count="5">5</span>
-                <span class="stat-label">Professional Roles</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div x-data="counter(5)" x-intersect.once="animate()" class="glass-card p-6 text-center">
+                <span class="text-4xl font-black gradient-text block" x-text="Math.round(count)">0</span>
+                <span class="text-slate-400 text-sm mt-1 block">Professional Roles</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="4">4</span>
-                <span class="stat-label">Countries Worked</span>
+            <div x-data="counter(4)" x-intersect.once="animate()" class="glass-card p-6 text-center">
+                <span class="text-4xl font-black gradient-text block" x-text="Math.round(count)">0</span>
+                <span class="text-slate-400 text-sm mt-1 block">Countries Worked</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="3">3+</span>
-                <span class="stat-label">Years Experience</span>
+            <div x-data="counter(3)" x-intersect.once="animate()" class="glass-card p-6 text-center">
+                <span class="text-4xl font-black gradient-text block" x-text="Math.round(count)">0</span><span class="text-4xl font-black gradient-text">+</span>
+                <span class="text-slate-400 text-sm mt-1 block">Years Experience</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number" data-count="4">4</span>
-                <span class="stat-label">Universities</span>
+            <div x-data="counter(4)" x-intersect.once="animate()" class="glass-card p-6 text-center">
+                <span class="text-4xl font-black gradient-text block" x-text="Math.round(count)">0</span>
+                <span class="text-slate-400 text-sm mt-1 block">Universities</span>
             </div>
         </div>
     </div>
 </section>
-
-<style>
-/* Projects/Experience Page Specific Styles */
-.experience-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-.experience-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border-radius: 24px;
-    padding: 2rem;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.experience-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
-}
-
-.experience-card:hover {
-    transform: translateX(10px);
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
-    border-color: var(--color-primary);
-}
-
-.exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-}
-
-.exp-icon {
-    font-size: 2.5rem;
-}
-
-.exp-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.3rem;
-}
-
-.exp-date {
-    font-size: 0.9rem;
-    color: var(--color-primary);
-    font-weight: 600;
-}
-
-.exp-location {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-}
-
-.exp-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.3rem;
-    background: linear-gradient(135deg, var(--color-text), var(--color-primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.exp-company {
-    font-size: 1.1rem;
-    color: var(--color-primary);
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.exp-description {
-    margin-bottom: 1.5rem;
-}
-
-.exp-description p {
-    color: var(--color-text-muted);
-    line-height: 1.7;
-}
-
-.exp-description ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.exp-description li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.8rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-.exp-description li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: bold;
-}
-
-.exp-description strong {
-    color: var(--color-text);
-}
-
-.exp-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.exp-tag {
-    background: rgba(102, 126, 234, 0.15);
-    color: var(--color-text);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    border: 1px solid rgba(102, 126, 234, 0.3);
-}
-
-.exp-achievements {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.achievement {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.1));
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.exp-status {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-}
-
-.exp-status.current span {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: 1px solid rgba(34, 197, 94, 0.4);
-    color: #22c55e;
-}
-
-/* Stats Section */
-.stats-section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 3rem;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-    border-radius: 24px;
-    border: 1px solid rgba(102, 126, 234, 0.2);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: block;
-}
-
-.stat-label {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .exp-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .exp-meta {
-        align-items: flex-start;
-    }
-    
-    .exp-status {
-        position: static;
-        margin-top: 1rem;
-    }
-    
-    .stats-section {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 2rem;
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-    }
-}
-</style>
 {% endblock %}

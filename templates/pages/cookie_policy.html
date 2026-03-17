@@ -1,50 +1,54 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title">Cookie Policy</h1>
-        <p class="page-subtitle">Last updated: February 2026</p>
+<div class="section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+        <h1 id="page-title" class="section-title">Cookie Policy</h1>
+        <p class="text-slate-500 text-sm">Last updated: February 2026</p>
     </div>
-</section>
 
-<section class="legal-content">
-    <div class="container">
-        <article class="legal-article">
-            <h2>What Are Cookies?</h2>
-            <p>Cookies are small text files stored on your device when you visit a website.</p>
+    <div class="space-y-6">
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">What Are Cookies?</h2>
+            <p class="text-slate-300 leading-relaxed">Cookies are small text files stored on your device when you visit a website. They help the site remember your preferences and improve your experience.</p>
+        </div>
 
-            <h2>Cookies We Use</h2>
-            <table class="cookie-table">
-                <thead>
-                    <tr>
-                        <th scope="col">Cookie</th>
-                        <th scope="col">Purpose</th>
-                        <th scope="col">Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>session</td>
-                        <td>Maintains your session</td>
-                        <td>Session</td>
-                    </tr>
-                    <tr>
-                        <td>csrf_token</td>
-                        <td>Security protection</td>
-                        <td>Session</td>
-                    </tr>
-                    <tr>
-                        <td>cookie_consent</td>
-                        <td>Remembers your preferences</td>
-                        <td>1 year</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-4">Cookies We Use</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th scope="col" class="py-3 pr-4 text-slate-300 font-semibold">Cookie</th>
+                            <th scope="col" class="py-3 pr-4 text-slate-300 font-semibold">Purpose</th>
+                            <th scope="col" class="py-3 text-slate-300 font-semibold">Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-400">
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 pr-4 font-mono text-primary-400">session</td>
+                            <td class="py-3 pr-4">Maintains your session</td>
+                            <td class="py-3">Session</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 pr-4 font-mono text-primary-400">csrf_token</td>
+                            <td class="py-3 pr-4">Security protection</td>
+                            <td class="py-3">Session</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 pr-4 font-mono text-primary-400">cookie_consent</td>
+                            <td class="py-3 pr-4">Remembers your preferences</td>
+                            <td class="py-3">1 year</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <h2>Managing Cookies</h2>
-            <p>You can control cookies through your browser settings or our cookie consent banner.</p>
-        </article>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Managing Cookies</h2>
+            <p class="text-slate-300 leading-relaxed">You can control cookies through your browser settings or our cookie consent banner. Note that disabling certain cookies may affect website functionality.</p>
+        </div>
     </div>
-</section>
+</div>
 {% endblock %}

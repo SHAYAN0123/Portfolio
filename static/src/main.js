@@ -285,6 +285,14 @@ window.utils = {
   }
 }
 
+Alpine.data('journeyTimeline', () => ({
+  revealed: 0,
+  reveal(el) {
+    el.classList.add('journey-visible')
+    this.revealed++
+  }
+}))
+
 // Initialize Alpine
 Alpine.start()
 

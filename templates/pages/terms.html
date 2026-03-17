@@ -1,31 +1,37 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title">Terms of Service</h1>
-        <p class="page-subtitle">Last updated: February 2026</p>
+<div class="section max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+        <h1 id="page-title" class="section-title">Terms of Service</h1>
+        <p class="text-slate-500 text-sm">Last updated: February 2026</p>
     </div>
-</section>
 
-<section class="legal-content">
-    <div class="container">
-        <article class="legal-article">
-            <h2>Acceptance of Terms</h2>
-            <p>By accessing this website, you agree to these terms of service.</p>
+    <div class="space-y-6">
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Acceptance of Terms</h2>
+            <p class="text-slate-300 leading-relaxed">By accessing this website, you agree to these terms of service. If you do not agree, please discontinue use of the site.</p>
+        </div>
 
-            <h2>Use of Website</h2>
-            <p>You agree to use this website for lawful purposes only.</p>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Use of Website</h2>
+            <p class="text-slate-300 leading-relaxed">You agree to use this website for lawful purposes only and in a way that does not infringe the rights of others or restrict their use and enjoyment of the site.</p>
+        </div>
 
-            <h2>Intellectual Property</h2>
-            <p>All content on this website is protected by copyright and other intellectual property rights.</p>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Intellectual Property</h2>
+            <p class="text-slate-300 leading-relaxed">All content on this website is protected by copyright and other intellectual property rights. You may not reproduce or distribute any content without prior written permission.</p>
+        </div>
 
-            <h2>Limitation of Liability</h2>
-            <p>This website is provided "as is" without warranties of any kind.</p>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Limitation of Liability</h2>
+            <p class="text-slate-300 leading-relaxed">This website is provided "as is" without warranties of any kind, express or implied. We make no guarantees about the accuracy or completeness of the content.</p>
+        </div>
 
-            <h2>Contact</h2>
-            <p>For questions about these terms, <a href="{{ url_for('contact.contact') }}">contact us</a>.</p>
-        </article>
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Contact</h2>
+            <p class="text-slate-300 leading-relaxed">For questions about these terms, <a href="{{ url_for('contact.contact') }}" class="text-primary-400 hover:text-primary-300 transition-colors">contact us</a>.</p>
+        </div>
     </div>
-</section>
+</div>
 {% endblock %}

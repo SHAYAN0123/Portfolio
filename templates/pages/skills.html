@@ -1,523 +1,163 @@
-{% extends "base.html" %}
+{% extends "base_modern.html" %}
 
 {% block content %}
-<section class="page-header" aria-labelledby="page-title">
-    <div class="container">
-        <h1 id="page-title" class="animate-on-scroll">
-            <span class="glow-text">What I Do</span> ✨
-        </h1>
-        <p class="page-subtitle animate-on-scroll" style="animation-delay: 0.2s;">
-            Software Engineer × Product Thinker × Cloud & Data Enthusiast
-        </p>
-    </div>
-</section>
-
-<section class="skills-section" aria-labelledby="skills-heading">
-    <div class="container">
-        <h2 id="skills-heading" class="sr-only">Skills and Expertise</h2>
+<section class="section" aria-labelledby="page-title">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h1 id="page-title" class="section-title">What I Do ✨</h1>
+            <p class="section-subtitle mx-auto">Software Engineer × Product Thinker × Cloud &amp; Data Enthusiast</p>
+        </div>
 
         <!-- Three Pillars -->
-        <div class="skills-pillars">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12" aria-label="Skills and expertise">
             <!-- Pillar 1: Software Engineering -->
-            <div class="pillar-card animate-on-scroll card-3d" style="animation-delay: 0.1s;">
-                <div class="pillar-icon">👨‍💻</div>
-                <h3>Software Engineering</h3>
-                <p class="pillar-desc">Building robust, scalable, and maintainable software solutions</p>
-                
-                <div class="skill-tags">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">TypeScript</span>
-                    <span class="skill-tag">OOP</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Express.js</span>
-                    <span class="skill-tag">Flask</span>
-                    <span class="skill-tag">REST APIs</span>
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">Bootstrap</span>
-                    <span class="skill-tag">Tailwind CSS</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">Version Control</span>
-                    <span class="skill-tag">Automated Testing</span>
-                    <span class="skill-tag">End-to-End Testing</span>
-                    <span class="skill-tag">WCAG 2.1 AA</span>
-                    <span class="skill-tag">Responsive Design</span>
+            <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                <div class="text-5xl mb-4" aria-hidden="true">👨‍💻</div>
+                <h2 class="text-xl font-bold gradient-text mb-2">Software Engineering</h2>
+                <p class="text-slate-400 text-sm mb-6">Building robust, scalable, and maintainable software solutions</p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span><span class="skill-tag">OOP</span><span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">Flask</span>
+                    <span class="skill-tag">REST APIs</span><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span>
+                    <span class="skill-tag">Bootstrap</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span><span class="skill-tag">Automated Testing</span>
+                    <span class="skill-tag">WCAG 2.1 AA</span><span class="skill-tag">Responsive Design</span>
                 </div>
-            </div>
+            </article>
 
             <!-- Pillar 2: Product & Agile -->
-            <div class="pillar-card animate-on-scroll card-3d" style="animation-delay: 0.2s;">
-                <div class="pillar-icon">🎯</div>
-                <h3>Product & Agile Leadership</h3>
-                <p class="pillar-desc">Bridging business needs with technical execution</p>
-                
-                <div class="skill-tags">
-                    <span class="skill-tag">Scrum Master</span>
-                    <span class="skill-tag">Business Analysis</span>
-                    <span class="skill-tag">Sprint Planning</span>
-                    <span class="skill-tag">Retrospectives</span>
-                    <span class="skill-tag">Backlog Refinement</span>
-                    <span class="skill-tag">User Story Development</span>
-                    <span class="skill-tag">Requirements Gathering</span>
-                    <span class="skill-tag">Stakeholder Management</span>
-                    <span class="skill-tag">Cross-functional Teams</span>
-                    <span class="skill-tag">Process Optimization</span>
+            <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                <div class="text-5xl mb-4" aria-hidden="true">🎯</div>
+                <h2 class="text-xl font-bold gradient-text mb-2">Product &amp; Agile Leadership</h2>
+                <p class="text-slate-400 text-sm mb-6">Bridging business needs with technical execution</p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag">Scrum Master</span><span class="skill-tag">Business Analysis</span>
+                    <span class="skill-tag">Sprint Planning</span><span class="skill-tag">Retrospectives</span>
+                    <span class="skill-tag">Backlog Refinement</span><span class="skill-tag">User Story Development</span>
+                    <span class="skill-tag">Requirements Gathering</span><span class="skill-tag">Stakeholder Management</span>
+                    <span class="skill-tag">Cross-functional Teams</span><span class="skill-tag">Process Optimization</span>
                     <span class="skill-tag">Workshop Facilitation</span>
                 </div>
-            </div>
+            </article>
 
             <!-- Pillar 3: Cloud, Data & AI -->
-            <div class="pillar-card animate-on-scroll card-3d" style="animation-delay: 0.3s;">
-                <div class="pillar-icon">🤖</div>
-                <h3>Cloud, Data & AI</h3>
-                <p class="pillar-desc">Embracing the future of cloud-native and LLM-driven development</p>
-                
-                <div class="skill-tags">
-                    <span class="skill-tag">AWS</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">Kubernetes</span>
-                    <span class="skill-tag">Cloud Deployment</span>
-                    <span class="skill-tag">CI/CD</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">PostgreSQL</span>
-                    <span class="skill-tag">InfluxDB</span>
-                    <span class="skill-tag">Redis</span>
-                    <span class="skill-tag">MQTT</span>
-                    <span class="skill-tag">Grafana</span>
-                    <span class="skill-tag">IoT Systems</span>
-                    <span class="skill-tag">Systems Design</span>
-                    <span class="skill-tag">Large Language Models</span>
-                    <span class="skill-tag">AI-Assisted Development</span>
-                    <span class="skill-tag">Data Visualization</span>
+            <article class="interactive-card text-center" x-data="tiltCard()" @mousemove="handleMouseMove($event)" @mouseleave="handleMouseLeave()" :style="{ transform: transform }">
+                <div class="text-5xl mb-4" aria-hidden="true">🤖</div>
+                <h2 class="text-xl font-bold gradient-text mb-2">Cloud, Data &amp; AI</h2>
+                <p class="text-slate-400 text-sm mb-6">Embracing the future of cloud-native and LLM-driven development</p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="skill-tag">AWS</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Cloud Deployment</span><span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">MongoDB</span><span class="skill-tag">SQL</span><span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">InfluxDB</span><span class="skill-tag">Redis</span><span class="skill-tag">MQTT</span>
+                    <span class="skill-tag">Grafana</span><span class="skill-tag">IoT Systems</span>
+                    <span class="skill-tag">Systems Design</span><span class="skill-tag">Large Language Models</span>
+                    <span class="skill-tag">AI-Assisted Development</span><span class="skill-tag">Data Visualization</span>
                     <span class="skill-tag">MVP Development</span>
                 </div>
-            </div>
+            </article>
         </div>
 
-        <!-- Languages Section -->
-        <div class="languages-section animate-on-scroll" style="animation-delay: 0.4s;">
-            <h3>🌍 Languages</h3>
-            <div class="languages-grid">
-                <div class="language-item">
-                    <span class="language-flag">🇬🇧</span>
-                    <div class="language-info">
-                        <span class="language-name">English</span>
-                        <span class="language-level">Full Professional</span>
-                    </div>
+        <!-- Languages -->
+        <div class="glass-card p-6 md:p-8 mb-8">
+            <h2 class="text-xl font-bold text-white text-center mb-6">🌍 Languages</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                    <span class="text-2xl">🇬🇧</span>
+                    <div><p class="font-semibold text-white text-sm">English</p><p class="text-slate-400 text-xs">Full Professional</p></div>
                 </div>
-                <div class="language-item">
-                    <span class="language-flag">🇵🇰</span>
-                    <div class="language-info">
-                        <span class="language-name">Punjabi</span>
-                        <span class="language-level">Native / Bilingual</span>
-                    </div>
+                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                    <span class="text-2xl">🇵🇰</span>
+                    <div><p class="font-semibold text-white text-sm">Punjabi</p><p class="text-slate-400 text-xs">Native / Bilingual</p></div>
                 </div>
-                <div class="language-item">
-                    <span class="language-flag">🇵🇰</span>
-                    <div class="language-info">
-                        <span class="language-name">Urdu</span>
-                        <span class="language-level">Native / Bilingual</span>
-                    </div>
+                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                    <span class="text-2xl">🇵🇰</span>
+                    <div><p class="font-semibold text-white text-sm">Urdu</p><p class="text-slate-400 text-xs">Native / Bilingual</p></div>
                 </div>
-                <div class="language-item">
-                    <span class="language-flag">🇮🇳</span>
-                    <div class="language-info">
-                        <span class="language-name">Hindi</span>
-                        <span class="language-level">Native / Bilingual</span>
-                    </div>
+                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                    <span class="text-2xl">🇮🇳</span>
+                    <div><p class="font-semibold text-white text-sm">Hindi</p><p class="text-slate-400 text-xs">Native / Bilingual</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Currently Learning -->
-        <div class="learning-section animate-on-scroll" style="animation-delay: 0.5s;">
-            <h3>🚀 Currently Exploring</h3>
-            <div class="learning-grid">
-                <div class="learning-item">
-                    <span class="learning-icon">🧠</span>
-                    <span>LLM Development</span>
+        <!-- Currently Exploring -->
+        <div class="glass-card p-6 md:p-8 mb-8 text-center">
+            <h2 class="text-xl font-bold text-white mb-6">🚀 Currently Exploring</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl min-w-[120px] hover:-translate-y-1 transition-transform">
+                    <span class="text-3xl">🧠</span><span class="text-slate-300 text-sm font-medium">LLM Development</span>
                 </div>
-                <div class="learning-item">
-                    <span class="learning-icon">☁️</span>
-                    <span>Cloud Architecture</span>
+                <div class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl min-w-[120px] hover:-translate-y-1 transition-transform">
+                    <span class="text-3xl">☁️</span><span class="text-slate-300 text-sm font-medium">Cloud Architecture</span>
                 </div>
-                <div class="learning-item">
-                    <span class="learning-icon">🌱</span>
-                    <span>Green Software</span>
+                <div class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl min-w-[120px] hover:-translate-y-1 transition-transform">
+                    <span class="text-3xl">🌱</span><span class="text-slate-300 text-sm font-medium">Green Software</span>
                 </div>
-                <div class="learning-item">
-                    <span class="learning-icon">📊</span>
-                    <span>Data Engineering</span>
+                <div class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl min-w-[120px] hover:-translate-y-1 transition-transform">
+                    <span class="text-3xl">📊</span><span class="text-slate-300 text-sm font-medium">Data Engineering</span>
                 </div>
             </div>
         </div>
 
         <!-- Education -->
-        <div class="education-section animate-on-scroll" style="animation-delay: 0.6s;">
-            <h3>🎓 Education</h3>
-            <div class="education-grid">
-                <div class="edu-card">
-                    <div class="edu-icon">🇪🇺</div>
-                    <div class="edu-content">
-                        <h4>Erasmus Mundus Joint Master's</h4>
-                        <p class="edu-program">Software Engineers for Green Deal (SE4GD)</p>
-                        <p class="edu-detail">Computer Science (Joint Degree UvA & VU)</p>
-                        <div class="edu-universities">
-                            <span>University of Amsterdam</span>
-                            <span>Vrije Universiteit Amsterdam</span>
-                            <span>LUT University, Finland</span>
-                            <span>Università degli Studi dell'Aquila, Italy</span>
+        <div class="glass-card p-6 md:p-8 mb-8">
+            <h2 class="text-xl font-bold text-white mb-6">🎓 Education</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex gap-4 p-4 bg-white/5 rounded-2xl">
+                    <div class="text-4xl flex-shrink-0">🇪🇺</div>
+                    <div>
+                        <h3 class="font-bold text-white mb-1">Erasmus Mundus Joint Master's</h3>
+                        <p class="text-primary-400 text-sm font-semibold mb-1">Software Engineers for Green Deal (SE4GD)</p>
+                        <p class="text-slate-400 text-sm mb-2">Computer Science (Joint Degree UvA &amp; VU)</p>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="px-2 py-0.5 bg-primary-500/15 rounded text-xs text-slate-300">University of Amsterdam</span>
+                            <span class="px-2 py-0.5 bg-primary-500/15 rounded text-xs text-slate-300">VU Amsterdam</span>
+                            <span class="px-2 py-0.5 bg-primary-500/15 rounded text-xs text-slate-300">LUT University, Finland</span>
+                            <span class="px-2 py-0.5 bg-primary-500/15 rounded text-xs text-slate-300">Università dell'Aquila, Italy</span>
                         </div>
-                        <p class="edu-date">September 2024 - September 2026</p>
+                        <p class="text-slate-500 text-xs">September 2024 – September 2026</p>
                     </div>
                 </div>
-                <div class="edu-card">
-                    <div class="edu-icon">🇬🇧</div>
-                    <div class="edu-content">
-                        <h4>Bachelor of Science</h4>
-                        <p class="edu-program">Software Engineering</p>
-                        <p class="edu-detail">Liverpool John Moores University</p>
-                        <p class="edu-date">October 2021 - July 2024</p>
+                <div class="flex gap-4 p-4 bg-white/5 rounded-2xl">
+                    <div class="text-4xl flex-shrink-0">🇬🇧</div>
+                    <div>
+                        <h3 class="font-bold text-white mb-1">Bachelor of Science</h3>
+                        <p class="text-primary-400 text-sm font-semibold mb-1">Software Engineering</p>
+                        <p class="text-slate-400 text-sm mb-2">Liverpool John Moores University</p>
+                        <p class="text-slate-500 text-xs">October 2021 – July 2024</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Approach Section -->
-        <div class="approach-section animate-on-scroll" style="animation-delay: 0.7s;">
-            <h3>💡 My Approach</h3>
-            <div class="approach-grid">
-                <div class="approach-card">
-                    <span class="approach-icon">🌍</span>
-                    <h4>Sustainability First</h4>
-                    <p>Building software with environmental impact in mind. Green coding practices matter.</p>
+        <!-- My Approach -->
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-xl font-bold text-white text-center mb-6">💡 My Approach</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-white/5 rounded-2xl hover:border hover:border-primary-500/30 transition-all">
+                    <span class="text-3xl block mb-3">🌍</span>
+                    <h3 class="font-semibold text-white text-sm mb-2">Sustainability First</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Building software with environmental impact in mind. Green coding practices matter.</p>
                 </div>
-                <div class="approach-card">
-                    <span class="approach-icon">♿</span>
-                    <h4>Accessibility Always</h4>
-                    <p>Creating inclusive experiences that work for everyone, following WCAG 2.1 AA compliance.</p>
+                <div class="text-center p-4 bg-white/5 rounded-2xl hover:border hover:border-primary-500/30 transition-all">
+                    <span class="text-3xl block mb-3">♿</span>
+                    <h3 class="font-semibold text-white text-sm mb-2">Accessibility Always</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Creating inclusive experiences that work for everyone, following WCAG 2.1 AA compliance.</p>
                 </div>
-                <div class="approach-card">
-                    <span class="approach-icon">🤝</span>
-                    <h4>Collaboration Driven</h4>
-                    <p>Best solutions come from diverse cross-functional teams working towards shared goals.</p>
+                <div class="text-center p-4 bg-white/5 rounded-2xl hover:border hover:border-primary-500/30 transition-all">
+                    <span class="text-3xl block mb-3">🤝</span>
+                    <h3 class="font-semibold text-white text-sm mb-2">Collaboration Driven</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Best solutions come from diverse cross-functional teams working towards shared goals.</p>
                 </div>
-                <div class="approach-card">
-                    <span class="approach-icon">📈</span>
-                    <h4>Continuous Learning</h4>
-                    <p>The tech landscape evolves fast. I embrace change and keep growing.</p>
+                <div class="text-center p-4 bg-white/5 rounded-2xl hover:border hover:border-primary-500/30 transition-all">
+                    <span class="text-3xl block mb-3">📈</span>
+                    <h3 class="font-semibold text-white text-sm mb-2">Continuous Learning</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">The tech landscape evolves fast. I embrace change and keep growing.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<style>
-/* Skills Page Specific Styles */
-
-/* Skills Pillars */
-.skills-pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.pillar-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border-radius: 24px;
-    padding: 2rem;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.pillar-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
-    border-color: var(--color-primary);
-}
-
-.pillar-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-.pillar-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.pillar-desc {
-    color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-}
-
-.skill-tag {
-    background: rgba(102, 126, 234, 0.15);
-    color: var(--color-text);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    border: 1px solid rgba(102, 126, 234, 0.3);
-    transition: all 0.2s ease;
-}
-
-.skill-tag:hover {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    transform: scale(1.05);
-}
-
-/* Languages Section */
-.languages-section {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-    border-radius: 24px;
-    padding: 2rem;
-    margin-bottom: 3rem;
-    border: 1px solid rgba(102, 126, 234, 0.2);
-}
-
-.languages-section h3 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.languages-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-
-.language-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 16px;
-}
-
-.language-flag {
-    font-size: 2rem;
-}
-
-.language-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.language-name {
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.language-level {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-}
-
-/* Learning Section */
-.learning-section {
-    margin-bottom: 3rem;
-    text-align: center;
-}
-
-.learning-section h3 {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.learning-grid {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.learning-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 16px;
-    min-width: 150px;
-    transition: transform 0.2s ease;
-}
-
-.learning-item:hover {
-    transform: translateY(-5px);
-}
-
-.learning-icon {
-    font-size: 2rem;
-}
-
-/* Education Section */
-.education-section {
-    margin-bottom: 3rem;
-}
-
-.education-section h3 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.edu-card {
-    display: flex;
-    gap: 1.5rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.edu-icon {
-    font-size: 3rem;
-    flex-shrink: 0;
-}
-
-.edu-content h4 {
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-
-.edu-program {
-    color: var(--color-primary);
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-}
-
-.edu-detail {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.edu-universities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.edu-universities span {
-    background: rgba(102, 126, 234, 0.15);
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    font-size: 0.75rem;
-}
-
-.edu-date {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-}
-
-/* Approach Section */
-.approach-section h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-}
-
-.approach-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-
-.approach-card {
-    text-align: center;
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.03);
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: all 0.3s ease;
-}
-
-.approach-card:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-5px);
-}
-
-.approach-icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 1rem;
-}
-
-.approach-card h4 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.approach-card p {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-    .skills-pillars {
-        grid-template-columns: 1fr;
-    }
-    
-    .languages-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .approach-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .languages-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .certs-grid,
-    .education-grid,
-    .awards-grid,
-    .approach-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .edu-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .top-skills-grid {
-        gap: 1.5rem;
-    }
-}
-</style>
 {% endblock %}
